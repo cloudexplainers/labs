@@ -1,0 +1,4 @@
+#!/bin/bash
+# Prints the tea shop's orders as CSV (installed in ~/.local/bin, where pipx and pip install --user put tools).
+echo "order,tea,grams"
+cat /srv/shop/orders.txt

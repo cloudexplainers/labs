@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""Ask Claude Code (headless) one question and print every tool it uses.
+
+  agent [--mcp] [--github] [--skill] "question"
+
+--mcp     connect the orders MCP server (mcp.json)
+--github  connect GitHub's official MCP server (github.json), to measure its size
+--skill   run in shop/, which holds the late-order-reply skill
+Nothing else is loaded: no user settings, no other MCP servers, no shell or file tools.
+LOAD_ALL_TOOLS=1 turns off tool search, so every MCP tool definition is sent up front.
+"""
+import json, os, subprocess, sys
+
+here = os.path.dirname(os.path.abspath(__file__))
+args, flags = [], set()
+for a in sys.argv[1:]:
+    (flags.add(a) if a.startswith("--") else args.append(a))
+cmd = ["claude", "-p", " ".join(args), "--model", "sonnet",
+       "--output-format", "stream-json", "--verbose",
+       "--setting-sources", "project", "--strict-mcp-config",
+       "--tools", "Skill,ToolSearch", "--allowedTools", "mcp__orders,Skill",
+       "--append-system-prompt", "Answer in plain text, without Markdown."]
+for flag, cfg in (("--mcp", "mcp.json"), ("--github", "github.json")):
+    if flag in flags:
+        cmd += ["--mcp-config", os.path.join(here, cfg)]
+cwd = os.path.join(here, "shop" if "--skill" in flags else "plain")
+env = dict(os.environ)
+if os.environ.get("LOAD_ALL_TOOLS"):
+    env["ENABLE_TOOL_SEARCH"] = "false"
+
+first, answer = None, ""
+proc = subprocess.run(cmd, cwd=cwd, env=env, capture_output=True, text=True)
+for line in proc.stdout.splitlines():
+    ev = json.loads(line)
+    if ev.get("type") == "assistant":
+        msg = ev["message"]
+        if first is None:
+            u = msg["usage"]
+            first = u["input_tokens"] + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0)
+        for block in msg["content"]:
+            if block["type"] == "tool_use":
+                name, inp = block["name"], block["input"]
+                if name == "Skill":
+                    print(f"[loaded skill: {inp.get('skill') or inp.get('command')}]")
+                elif name.startswith("mcp__"):
+                    _, server, tool = name.split("__", 2)
+                    shown = ", ".join(f"{k}={v}" for k, v in inp.items())
+                    print(f"[MCP tool: {server} > {tool}({shown})]")
+    elif ev.get("type") == "result":
+        answer = ev.get("result", "")
+print(answer.strip())
+print(f"(first request: {first:,} tokens)")

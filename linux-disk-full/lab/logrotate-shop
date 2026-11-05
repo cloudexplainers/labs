@@ -1,0 +1,9 @@
+/var/log/shop/*.log {
+    daily
+    maxsize 50M
+    rotate 7
+    compress
+    missingok
+    notifempty
+    copytruncate
+}

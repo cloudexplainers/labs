@@ -1,0 +1,4 @@
+postgres 123456
+postgres admin
+postgres password
+postgres postgres

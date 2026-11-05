@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Print the model's reply to request N of the last agent run, exactly as it came back.
+
+  raw N
+
+Reads .log/last.jsonl (kept by ./agent). Only the reply's content is printed: its text and
+tool requests. Thinking blocks are left out (they're signed, and long).
+"""
+import json, os, sys
+
+here = os.path.dirname(os.path.abspath(__file__))
+want = int(sys.argv[1])
+seen, blocks = [], []
+for line in open(os.path.join(here, ".log", "last.jsonl")):
+    ev = json.loads(line)
+    if ev.get("type") != "assistant":
+        continue
+    m = ev["message"]
+    if m["id"] not in seen:
+        seen.append(m["id"])
+    if len(seen) == want:
+        for b in m["content"]:
+            if b["type"] == "text":
+                blocks.append({"type": "text", "text": b["text"]})
+            elif b["type"] == "tool_use":
+                blocks.append({"type": "tool_use", "id": b["id"], "name": b["name"], "input": b["input"]})
+print(json.dumps(blocks, indent=2))

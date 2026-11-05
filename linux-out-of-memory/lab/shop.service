@@ -1,0 +1,12 @@
+[Unit]
+Description=Ana's shop
+After=postgresql.service
+
+[Service]
+User=shop
+Environment=WORKERS=8 CATALOG_MB=150
+ExecStart=/usr/local/bin/shop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

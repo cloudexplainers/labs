@@ -1,0 +1,16 @@
+#!/usr/bin/env python3
+"""How each agent grows: build it with the first N procedures of the handbook, send one tiny request
+("Reply with just: ok") and print the tokens that one request read, for N = 0, 4, 8 and 12."""
+import json, os, subprocess
+
+here = os.path.dirname(os.path.abspath(__file__))
+print(f"{'procedures':>10}  {'giant prompt':>12}  {'skills':>8}")
+for n in (0, 4, 8, 12):
+    subprocess.run([os.path.join(here, "build"), str(n)], check=True)
+    row = []
+    for kind in ("giant", "skills"):
+        env = dict(os.environ, AGENT_DIR=os.path.join(here, "sizes", f"{kind}-{n}"))
+        subprocess.run([os.path.join(here, "agent"), f"--{kind}", "Reply with just: ok", "--no-reply"],
+                       env=env, check=True, capture_output=True)
+        row.append(json.load(open(os.path.join(here, ".log", f"stats-{kind}.json")))["sizes"][0])
+    print(f"{n:>10}  {row[0]:>12,}  {row[1]:>8,}")

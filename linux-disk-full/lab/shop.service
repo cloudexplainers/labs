@@ -1,0 +1,11 @@
+[Unit]
+Description=Ana's tea shop
+After=network.target
+
+[Service]
+User=shop
+ExecStart=/usr/bin/python3 /opt/shop/shop.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

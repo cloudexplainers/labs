@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+"""Ana's shop dashboard (lab only): `shop login`, `shop token`, `shop orders`.
+Tokens are kept in ~/.shop/tokens.json. `shop orders` refreshes an expired access token once, then retries."""
+import getpass
+import json
+import sys
+import urllib.error
+import urllib.request
+from pathlib import Path
+
+STORE = Path.home() / ".shop" / "tokens.json"
+
+
+def call(method, url, body=None, token=None):
+    req = urllib.request.Request(url, method=method, data=json.dumps(body).encode() if body else None,
+                                 headers={"Content-Type": "application/json"})
+    if token:
+        req.add_header("Authorization", f"Bearer {token}")
+    try:
+        with urllib.request.urlopen(req) as r:
+            return r.status, json.loads(r.read())
+    except urllib.error.HTTPError as e:
+        return e.code, json.loads(e.read())
+
+
+def get_orders(tokens):
+    status, body = call("GET", "http://api/orders", token=tokens["access_token"])
+    print(f"GET /orders      -> {status} {body.get('error', 'OK')}")
+    if status == 401 and body.get("error") == "token_expired":
+        status, new = call("POST", "http://login/refresh", {"refresh_token": tokens["refresh_token"]})
+        print(f"POST /refresh    -> {status} {'new access token' if status == 200 else new['error']}")
+        if status != 200:
+            sys.exit("Please log in again.")
+        tokens["access_token"] = new["access_token"]
+        STORE.write_text(json.dumps(tokens))
+        status, body = call("GET", "http://api/orders", token=tokens["access_token"])   # retry once
+        print(f"GET /orders      -> {status} {body.get('error', 'OK')}")
+    return status, body
+
+
+cmd = sys.argv[1] if len(sys.argv) > 1 else ""
+if cmd == "login":
+    status, body = call("POST", "http://login/login", {"user": sys.argv[2], "password": getpass.getpass("Password: ")})
+    if status != 200:
+        sys.exit(f"login failed: {body['error']}")
+    STORE.parent.mkdir(mode=0o700, exist_ok=True)
+    STORE.write_text(json.dumps(body))
+    print(f"Logged in. Access token expires in {body['expires_in']} s.")
+elif cmd == "token":
+    print(json.loads(STORE.read_text())["access_token"])
+elif cmd == "orders":
+    status, body = get_orders(json.loads(STORE.read_text()))
+    if status == 200:
+        for o in body["orders"]:
+            print(f"  #{o['id']}  {o['item']:<14} ${o['total']:.2f}")
+    else:
+        sys.exit(f"Still {status} after a refresh: {body.get('message', body['error'])}")
+else:
+    sys.exit("usage: shop login USER | shop token | shop orders")

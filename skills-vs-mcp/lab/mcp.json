@@ -1,0 +1,1 @@
+{"mcpServers": {"orders": {"command": "docker", "args": ["run", "-i", "--rm", "orders-mcp"]}}}

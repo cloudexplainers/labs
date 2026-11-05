@@ -1,0 +1,13 @@
+# Trivy settings for the lab (Ana's home folder): scan installed OS packages only, with the
+# vulnerability database downloaded off-screen just before the demo.
+quiet: true
+cache:
+  dir: /home/ana/.cache/trivy
+db:
+  skip-update: true
+pkg:
+  types:
+    - os
+scan:
+  scanners:
+    - vuln

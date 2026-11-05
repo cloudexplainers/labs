@@ -1,0 +1,5 @@
+root 123456
+admin admin
+ubuntu ubuntu
+ana password
+test test123

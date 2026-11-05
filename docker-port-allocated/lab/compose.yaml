@@ -1,0 +1,5 @@
+services:
+  shop:
+    image: shop:v2
+    ports:
+      - "8080:80"

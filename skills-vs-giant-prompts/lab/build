@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+"""Build the two support agents from the same handbook.
+
+  build [N]    (default: all 12 procedures)
+
+giant/   CLAUDE.md = the always-on rules + every procedure, one after another: one giant prompt.
+skills/  CLAUDE.md = the always-on rules only; each procedure is a skill in .claude/skills/<name>/SKILL.md.
+The words of each procedure are the same in both. The refund calculator goes in each folder too.
+With N, only the first N procedures are used (to measure how each one grows), in sizes/giant-N and sizes/skills-N.
+"""
+import os, re, shutil, sys
+
+here = os.path.dirname(os.path.abspath(__file__))
+hb = os.path.join(here, "handbook")
+n = int(sys.argv[1]) if len(sys.argv) > 1 else None
+always = open(os.path.join(hb, "00-always.md")).read().strip()
+procs = []
+for f in sorted(os.listdir(hb)):
+    if f[:2].isdigit() and f[:2] != "00":
+        text = open(os.path.join(hb, f)).read()
+        m = re.match(r"---\nname: (.*)\ndescription: (.*)\n---\n(.*)", text, re.S)
+        procs.append((m.group(1), m.group(2), m.group(3).strip()))
+procs = procs[:n] if n is not None else procs
+giant_dir, skills_dir = (os.path.join(here, "sizes", f"{k}-{n}") for k in ("giant", "skills")) if n is not None \
+    else (os.path.join(here, k) for k in ("giant", "skills"))
+for d in (giant_dir, skills_dir):
+    shutil.rmtree(d, ignore_errors=True)
+    os.makedirs(d)
+script = os.path.join(here, "scripts", "refund.py")
+
+parts = ["# Kettle & Bean support handbook", always]
+for name, desc, body in procs:
+    if name == "refunds":
+        body = body.replace(".claude/skills/refunds/scripts/refund.py", "scripts/refund.py")
+        os.makedirs(os.path.join(giant_dir, "scripts"))
+        shutil.copy(script, os.path.join(giant_dir, "scripts"))
+    parts.append(re.sub(r"^# ", "## ", body, count=1).replace("\n## ", "\n### "))
+open(os.path.join(giant_dir, "CLAUDE.md"), "w").write("\n\n".join(parts) + "\n")
+
+open(os.path.join(skills_dir, "CLAUDE.md"), "w").write(always + "\n")
+for name, desc, body in procs:
+    d = os.path.join(skills_dir, ".claude", "skills", name)
+    os.makedirs(d)
+    open(os.path.join(d, "SKILL.md"), "w").write(f"---\nname: {name}\ndescription: {desc}\n---\n{body}\n")
+    if name == "refunds":
+        os.makedirs(os.path.join(d, "scripts"))
+        shutil.copy(script, os.path.join(d, "scripts"))

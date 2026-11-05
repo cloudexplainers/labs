@@ -1,0 +1,5 @@
+FROM golang:1.27
+WORKDIR /src
+COPY main.go .
+RUN go build -o /hello main.go
+CMD ["/hello"]

@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+"""Give the support agent (Claude Code, headless) one customer email, and show what it did.
+
+  agent --giant|--skills|--none EMAIL_FILE_OR_TEXT [--no-reply]
+
+--giant   runs in giant/: the whole handbook is in CLAUDE.md, read on every request
+--skills  runs in skills/: CLAUDE.md has three rules; each procedure is a skill, loaded when needed
+--none    runs in an empty folder: no handbook at all (to measure the agent itself)
+--no-reply  print what it loaded and ran, and the token counts, but not the reply
+Prints each skill it loads and each command it runs, its reply, and the tokens each model request read
+(its context: everything sent to the model for that request). Nothing else is loaded: no user settings,
+no memory, no MCP servers. Its only tools: Skill, and Bash for the refund calculator alone.
+It runs on the Claude Code login of this computer, never an API key.
+"""
+import json, os, subprocess, sys
+
+here = os.path.dirname(os.path.abspath(__file__))
+flags = [a for a in sys.argv[1:] if a.startswith("--")]
+email = " ".join(a for a in sys.argv[1:] if not a.startswith("--"))
+if os.path.isfile(email):
+    email = open(email).read().strip()
+where = next({"--giant": "giant", "--skills": "skills", "--none": "none"}[f] for f in flags if f != "--no-reply")
+cwd = os.environ.get("AGENT_DIR") or os.path.join(here, where)
+os.makedirs(cwd, exist_ok=True)
+cmd = ["claude", "-p", email, "--model", "sonnet", "--output-format", "stream-json", "--verbose",
+       "--setting-sources", "project", "--strict-mcp-config",
+       "--settings", json.dumps({"autoMemoryEnabled": False}),
+       "--permission-mode", "dontAsk", "--tools", "Skill,Bash",
+       "--allowedTools", "Skill,Bash(python3 .claude/skills/refunds/scripts/refund.py:*),Bash(python3 scripts/refund.py:*)",
+       "--append-system-prompt", "Answer in plain text, without Markdown."]
+env = {k: v for k, v in os.environ.items() if k not in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN")}
+env["CLAUDE_CODE_DISABLE_AUTO_MEMORY"] = "1"
+proc = subprocess.run(cmd, cwd=cwd, env=env, capture_output=True, text=True, stdin=subprocess.DEVNULL)
+os.makedirs(os.path.join(here, ".log"), exist_ok=True)
+open(os.path.join(here, ".log", f"last-{where}.jsonl"), "w").write(proc.stdout)
+
+seen, sizes, answer, cost = set(), [], "", 0.0
+for line in proc.stdout.splitlines():
+    ev = json.loads(line)
+    if ev.get("type") == "assistant":
+        msg = ev["message"]
+        if msg["id"] not in seen:
+            seen.add(msg["id"])
+            u = msg["usage"]
+            sizes.append(u["input_tokens"] + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0))
+        for b in msg["content"]:
+            if b["type"] == "tool_use":
+                if b["name"] == "Skill":
+                    print(f"[loaded skill: {b['input'].get('skill') or b['input'].get('command')}]")
+                elif b["name"] == "Bash":
+                    print(f"[ran: {b['input'].get('command')}]")
+    elif ev.get("type") == "result":
+        answer, cost = ev.get("result", ""), ev.get("total_cost_usd", 0.0)
+if not sizes:
+    sys.exit(proc.stderr.strip() or "no reply")
+if "--no-reply" not in flags:
+    print(answer.strip())
+print(f"(model requests: {len(sizes)} · context each: {', '.join(f'{s:,}' for s in sizes)} tokens"
+      f" · read in total: {sum(sizes):,})")
+json.dump({"sizes": sizes, "cost": cost}, open(os.path.join(here, ".log", f"stats-{where}.json"), "w"))
