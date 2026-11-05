@@ -1,0 +1,4 @@
+[
+ {"model": "menu.tea", "pk": 1, "fields": {"name": "Sencha", "price": "6.50", "stock": 40}},
+ {"model": "menu.tea", "pk": 2, "fields": {"name": "Earl Grey", "price": "5.00", "stock": 25}}
+]

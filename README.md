@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Django vs FastAPI: Which One Should You Use?](https://youtu.be/ImjnA7YUYZo) | [page](https://cloudexplainers.com/django-vs-fastapi-which-one-should-you-use/) | [django-vs-fastapi](django-vs-fastapi/) |
 | [Why SQLite Is the Most Used Database in the World](https://youtu.be/vXHFstokrRY) | [page](https://cloudexplainers.com/why-sqlite-is-the-most-used-database-in-the-world/) | [sqlite-most-used-why](sqlite-most-used-why/) |
 | [How a NoSQL Database Like MongoDB Works](https://youtu.be/4HCtsg-IwvA) | [page](https://cloudexplainers.com/how-a-nosql-database-like-mongodb-works/) | [mongodb-works](mongodb-works/) |
 | [How to Fix Python pip error: externally-managed-environment](https://youtu.be/St4Kf_abJyU) | [page](https://cloudexplainers.com/how-to-fix-python-pip-error-externally-managed-environment/) | [python-pip-externally-managed](python-pip-externally-managed/) |
