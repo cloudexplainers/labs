@@ -11,6 +11,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 | [Golang Concurrency Will Finally Make Sense After This](https://youtu.be/smsmY_GP7sg) | [page](https://cloudexplainers.com/golang-concurrency-will-finally-make-sense-after-this/) | [go-concurrency](go-concurrency/) |
 | [How Amazon S3 Works](https://youtu.be/z8y7Nmd4iME) | [page](https://cloudexplainers.com/how-amazon-s3-works/) | [s3-works](s3-works/) |
 | [How Kubernetes Works](https://youtu.be/yQXZjsRHI-k) | [page](https://cloudexplainers.com/how-kubernetes-works/) | [kubernetes-works](kubernetes-works/) |
+| [How Git Works](https://youtu.be/qmv45R44jhc) | [page](https://cloudexplainers.com/how-git-works/) | [git-works](git-works/) |
 | [How to Fix Docker Port Already Allocated Errors](https://youtu.be/lIQrKVh20ZQ) | [page](https://cloudexplainers.com/how-to-fix-docker-port-already-allocated-errors/) | [docker-port-allocated](docker-port-allocated/) |
 | [How PostgreSQL Works](https://youtu.be/llbqmoe-hNw) | [page](https://cloudexplainers.com/how-postgresql-works/) | [postgresql-works](postgresql-works/) |
 | [How to Fix Git Merge Conflicts](https://youtu.be/D2oPNUr5CbA) | [page](https://cloudexplainers.com/how-to-fix-git-merge-conflicts/) | [git-merge-conflicts](git-merge-conflicts/) |
