@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [The Linux Roadmap for Beginners](https://youtu.be/XHHgrmSQYqU) | [page](https://cloudexplainers.com/the-linux-roadmap-for-beginners/) | [linux-roadmap](linux-roadmap/) |
 | [Django vs FastAPI: Which One Should You Use?](https://youtu.be/ImjnA7YUYZo) | [page](https://cloudexplainers.com/django-vs-fastapi-which-one-should-you-use/) | [django-vs-fastapi](django-vs-fastapi/) |
 | [Why SQLite Is the Most Used Database in the World](https://youtu.be/vXHFstokrRY) | [page](https://cloudexplainers.com/why-sqlite-is-the-most-used-database-in-the-world/) | [sqlite-most-used-why](sqlite-most-used-why/) |
 | [How a NoSQL Database Like MongoDB Works](https://youtu.be/4HCtsg-IwvA) | [page](https://cloudexplainers.com/how-a-nosql-database-like-mongodb-works/) | [mongodb-works](mongodb-works/) |

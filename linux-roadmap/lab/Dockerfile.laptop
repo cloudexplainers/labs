@@ -1,0 +1,5 @@
+# Ana's laptop for P074: a plain Ubuntu 24.04 with an SSH client and curl, user ana.
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends openssh-client curl ca-certificates \
+ && rm -rf /var/lib/apt/lists/* && userdel -r ubuntu && useradd -m -s /bin/bash ana

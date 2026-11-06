@@ -1,0 +1,1 @@
+* * * * * /home/ana/check-site.sh >> /home/ana/site.log

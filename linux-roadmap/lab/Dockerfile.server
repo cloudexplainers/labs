@@ -1,0 +1,14 @@
+# Ana's first server for P074: a stock Ubuntu 24.04 with systemd running as PID 1 (so systemctl, journalctl
+# and cron work for real), OpenSSH, and a sudo user ana. Docker's policy-rc.d (which stops packages from starting
+# services) is removed and apt's package lists are kept, as on a real server. nginx is NOT installed: the demo installs it on camera.
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends systemd systemd-sysv dbus sudo cron curl \
+      iproute2 openssh-server ca-certificates less nano apt-utils \
+ && rm -f /usr/sbin/policy-rc.d \
+ && userdel -r ubuntu \
+ && useradd -m -s /bin/bash ana && echo 'ana:tea-for-two' | chpasswd && adduser ana sudo >/dev/null \
+ && systemctl enable ssh cron \
+ && systemctl mask getty@tty1.service console-getty.service
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]
