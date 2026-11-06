@@ -1,0 +1,56 @@
+{
+  "realm": "kettle",
+  "enabled": true,
+  "displayName": "Kettle ID",
+  "sslRequired": "all",
+  "accessTokenLifespan": 300,
+  "accessCodeLifespan": 60,
+  "users": [
+    {
+      "username": "ana",
+      "enabled": true,
+      "email": "ana@kettle.test",
+      "emailVerified": true,
+      "firstName": "Ana",
+      "lastName": "Reyes",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "green-tea-42",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "tea-shop",
+      "name": "Ana's Tea Shop",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "clientAuthenticatorType": "client-secret",
+      "secret": "lab-only-shop-secret",
+      "redirectUris": [
+        "https://shop.test/callback"
+      ],
+      "webOrigins": [
+        "https://shop.test"
+      ],
+      "standardFlowEnabled": true,
+      "implicitFlowEnabled": false,
+      "directAccessGrantsEnabled": false,
+      "consentRequired": true,
+      "attributes": {
+        "pkce.code.challenge.method": "S256"
+      },
+      "defaultClientScopes": [
+        "web-origins",
+        "acr",
+        "profile",
+        "basic",
+        "email"
+      ]
+    }
+  ]
+}

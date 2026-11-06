@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""A real Chromium browser, driven from the command line, standing in for Ana at her laptop.
+
+  browser signin URL   open the shop, click "Sign in with Kettle ID", sign in on Kettle ID's own page,
+                       answer its question about sharing, and print every page the browser loads on the way
+  browser open URL     open any address and print the page's heading and message
+
+Ana's Kettle ID password lives in ~/.kettle-password (she'd type it; the script types it for her, only on
+id.test's own page). Every line marked with a status code is a real response the browser received.
+"""
+import os
+import sys
+import urllib.parse
+
+from playwright.sync_api import sync_playwright
+
+
+def short(url):
+    u = urllib.parse.urlparse(url)
+    return u.netloc + u.path
+
+
+def main(argv):
+    mode, url = argv[0], argv[1]
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        page = b.new_context().new_page()
+
+        def seen(resp):
+            req = resp.request
+            if req.is_navigation_request() and req.frame == page.main_frame:
+                print(f"  {resp.status}  {req.method:<4}  {short(resp.url)}", flush=True)
+
+        page.on("response", seen)
+        print(f"browser: opened {short(url)}", flush=True)
+        page.goto(url)
+        if mode == "open":
+            page.wait_for_load_state()
+            shown = []
+            for sel in ("h1", "#kc-error-message", "p"):
+                if page.locator(sel).count():
+                    txt = " ".join(page.locator(sel).first.inner_text().split())
+                    if txt and txt not in shown:
+                        shown.append(txt)
+                        print(f"page:    {txt}")
+            b.close()
+            return
+        print('browser: clicks "Sign in with Kettle ID"', flush=True)
+        page.click("#signin")
+        page.wait_for_selector("#username")
+        print("browser: now on " + urllib.parse.urlparse(page.url).netloc + "'s own sign-in page", flush=True)
+        page.fill("#username", "ana")
+        page.fill("#password", open(os.path.expanduser("~/.kettle-password")).read().strip())
+        print("browser: types ana's user name and password there", flush=True)
+        page.click("#kc-login")
+        page.wait_for_selector("button[name=accept]")
+        asks = [" ".join(t.split()) for t in page.locator("#kc-oauth li").all_inner_texts()]
+        head = " ".join(page.locator("h1").first.inner_text().split())
+        ask = " ".join(page.locator("#kc-oauth h3").first.inner_text().split())
+        print(f"page:    {head}", flush=True)
+        print(f"         {ask} {', '.join(a for a in asks if a)}", flush=True)
+        print("browser: clicks Yes", flush=True)
+        page.click("button[name=accept]")
+        page.wait_for_url("https://shop.test/callback*")
+        page.wait_for_load_state()
+        q = dict(urllib.parse.parse_qsl(urllib.parse.urlparse(page.url).query))
+        print("browser: back at shop.test/callback with " +
+              ", ".join(f"{k}={v[:6]}..." for k, v in q.items() if k in ("state", "code")), flush=True)
+        print(f"page:    {' '.join(page.locator('h1').inner_text().split())}. "
+              f"{' '.join(page.locator('p').inner_text().split())}")
+        b.close()
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

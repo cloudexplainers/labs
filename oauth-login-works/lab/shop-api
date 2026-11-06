@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+"""shop-api me [--no-token]: ask Kettle ID's user API who this access token belongs to."""
+import json
+import sys
+
+import requests
+
+URL = "https://id.test/realms/kettle/protocol/openid-connect/userinfo"
+CA = "/etc/ssl/certs/ca-certificates.crt"
+if sys.argv[1:2] != ["me"]:
+    sys.exit("usage: shop-api me [--no-token]")
+headers = {}
+print(f"GET {URL}")
+if "--no-token" not in sys.argv:
+    tok = open("/srv/data/access_token").read()
+    headers["Authorization"] = "Bearer " + tok
+    print(f"Authorization: Bearer {tok[:12]}... ({len(tok):,} characters)")
+else:
+    print("(no Authorization header)")
+r = requests.get(URL, headers=headers, verify=CA)
+print(f"-> {r.status_code}")
+if r.text:
+    try:
+        print(json.dumps(r.json(), indent=1))
+    except ValueError:
+        print(r.text[:200])
+if r.headers.get("WWW-Authenticate"):
+    print("WWW-Authenticate: " + r.headers["WWW-Authenticate"])
