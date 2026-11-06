@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Why Python Web Scraping Returns Nothing (and the Fix)](https://youtu.be/k2QHyONLWzI) | [page](https://cloudexplainers.com/why-python-web-scraping-returns-nothing-and-the-fix/) | [python-web-scraping-empty](python-web-scraping-empty/) |
 | [Python Automation: Full Tutorial for Beginners](https://youtu.be/Oq0RlbCNMqA) | [page](https://cloudexplainers.com/python-automation-full-tutorial-for-beginners/) | [python-automation-tutorial](python-automation-tutorial/) |
 | [How OAuth Login Works](https://youtu.be/fRgamIVoEu0) | [page](https://cloudexplainers.com/how-oauth-login-works/) | [oauth-login-works](oauth-login-works/) |
 | [Google AI Studio Will Finally Make Sense After This](https://youtu.be/j7BVIQWSzYA) | [page](https://cloudexplainers.com/google-ai-studio-will-finally-make-sense-after-this/) | [google-ai-studio-make-sense](google-ai-studio-make-sense/) |
