@@ -4,6 +4,8 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Google AI Studio Will Finally Make Sense After This](https://youtu.be/j7BVIQWSzYA) | [page](https://cloudexplainers.com/google-ai-studio-will-finally-make-sense-after-this/) | [google-ai-studio-make-sense](google-ai-studio-make-sense/) |
+| [What Happens When You Run a Docker Container](https://youtu.be/zV0fWUH5hMc) | [page](https://cloudexplainers.com/what-happens-when-you-run-a-docker-container/) | [docker-run-what-happens](docker-run-what-happens/) |
 | [How to Fix Claude Code Billing Your API Key Instead of Your Plan](https://youtu.be/UtNMBfxjTTs) | [page](https://cloudexplainers.com/how-to-fix-claude-code-billing-your-api-key-instead-of-your-plan/) | [claude-code-api-key-billing](claude-code-api-key-billing/) |
 | [Why Passkeys Can't Be Phished Like Passwords](https://youtu.be/I-8PKe5C9aw) | [page](https://cloudexplainers.com/why-passkeys-can-t-be-phished-like-passwords/) | [passkeys-phishing-why](passkeys-phishing-why/) |
 | [PowerShell vs Bash: Which One Should You Learn?](https://youtu.be/gE82lqaOxQo) | [page](https://cloudexplainers.com/powershell-vs-bash-which-one-should-you-learn/) | [powershell-vs-bash](powershell-vs-bash/) |

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Send one request file to the Gemini API, then print the reply and its token counts.
+curl -s --max-time 100 https://generativelanguage.googleapis.com/v1beta/interactions \
+  -H "x-goog-api-key: $GEMINI_API_KEY" -H "Content-Type: application/json" -d @"$1" |
+  jq -r 'if .error then "error: \(.error.message)" else
+    (.steps[] | select(.type == "model_output") | .content[0].text),
+    "tokens: in \(.usage.total_input_tokens), thinking \(.usage.total_thought_tokens), out \(.usage.total_output_tokens)"
+  end'

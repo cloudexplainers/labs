@@ -1,0 +1,11 @@
+from google import genai
+
+client = genai.Client()  # finds the key in GEMINI_API_KEY by itself
+
+reply = client.interactions.create(
+    model="gemini-3.8-flash",
+    system_instruction="You write for Ana's Tea Shop. Two short sentences. Calm, no exclamation marks.",
+    input="Describe our Sencha green tea for the shop page.",
+    generation_config={"thinking_level": "low"},
+)
+print(reply.output_text)

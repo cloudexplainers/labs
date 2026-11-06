@@ -1,0 +1,5 @@
+{
+  "model": "gemini-3.8-flash",
+  "system_instruction": "You write for Ana's Tea Shop. Two short sentences. Calm, no exclamation marks.",
+  "input": "Describe our Sencha green tea for the shop page."
+}

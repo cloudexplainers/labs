@@ -1,0 +1,18 @@
+{
+  "model": "gemini-3.8-flash",
+  "input": "Sencha green tea, 100 g tin, 8 euros, steep 2 minutes at 75 C.",
+  "generation_config": { "thinking_level": "low" },
+  "response_format": {
+    "type": "text",
+    "mime_type": "application/json",
+    "schema": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "price_eur": { "type": "number" },
+        "steep_minutes": { "type": "number" }
+      },
+      "required": ["name", "price_eur", "steep_minutes"]
+    }
+  }
+}
