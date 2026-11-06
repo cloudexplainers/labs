@@ -4,6 +4,9 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix Claude Code Billing Your API Key Instead of Your Plan](https://youtu.be/UtNMBfxjTTs) | [page](https://cloudexplainers.com/how-to-fix-claude-code-billing-your-api-key-instead-of-your-plan/) | [claude-code-api-key-billing](claude-code-api-key-billing/) |
+| [Why Passkeys Can't Be Phished Like Passwords](https://youtu.be/I-8PKe5C9aw) | [page](https://cloudexplainers.com/why-passkeys-can-t-be-phished-like-passwords/) | [passkeys-phishing-why](passkeys-phishing-why/) |
+| [PowerShell vs Bash: Which One Should You Learn?](https://youtu.be/gE82lqaOxQo) | [page](https://cloudexplainers.com/powershell-vs-bash-which-one-should-you-learn/) | [powershell-vs-bash](powershell-vs-bash/) |
 | [The Linux Roadmap for Beginners](https://youtu.be/XHHgrmSQYqU) | [page](https://cloudexplainers.com/the-linux-roadmap-for-beginners/) | [linux-roadmap](linux-roadmap/) |
 | [Django vs FastAPI: Which One Should You Use?](https://youtu.be/ImjnA7YUYZo) | [page](https://cloudexplainers.com/django-vs-fastapi-which-one-should-you-use/) | [django-vs-fastapi](django-vs-fastapi/) |
 | [Why SQLite Is the Most Used Database in the World](https://youtu.be/vXHFstokrRY) | [page](https://cloudexplainers.com/why-sqlite-is-the-most-used-database-in-the-world/) | [sqlite-most-used-why](sqlite-most-used-why/) |

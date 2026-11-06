@@ -1,0 +1,7 @@
+[
+ {"id": 1041, "customer": "Mei", "tea": "Sencha", "total": 13.0},
+ {"id": 1042, "customer": "Tom", "tea": "Earl Grey", "total": 27.5},
+ {"id": 1043, "customer": "Ravi", "tea": "Oolong", "total": 8.25},
+ {"id": 1044, "customer": "Lena", "tea": "Matcha", "total": 42.0},
+ {"id": 1045, "customer": "Sam", "tea": "Rooibos", "total": 19.5}
+]

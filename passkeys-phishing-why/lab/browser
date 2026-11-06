@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+"""A real Chromium browser, driven from the command line, with a software passkey store.
+
+  browser signup URL                 open the shop's "add a passkey" page (as ana)
+  browser signin URL [--ask-for H]   open a sign-in page; --ask-for: the page asks for H's passkey
+  browser signin URL --show-signed   also print the data the passkey signed (clientDataJSON)
+  browser passkeys                   list the passkeys in the store
+
+The passkey store is Chrome's virtual authenticator (DevTools protocol), standing in for the store on your
+phone or laptop. It keeps its keys in ~/.passkeys.json between runs. The browser itself decides which
+passkeys a page may use: this script never picks one.
+"""
+import json
+import os
+import sys
+
+from playwright.sync_api import sync_playwright
+
+STORE = os.path.expanduser("~/.passkeys.json")
+
+
+def load():
+    return json.load(open(STORE)) if os.path.exists(STORE) else []
+
+
+def main(argv):
+    if argv[:1] == ["passkeys"]:
+        keys = load()
+        print(f"{len(keys)} passkey(s) in this store")
+        for k in keys:
+            print(f"  site: {k['rpId']}   user: {k['label']}")
+        return
+    mode, url = argv[0], argv[1].rstrip("/")
+    ask = argv[argv.index("--ask-for") + 1] if "--ask-for" in argv else None
+    page_url = url + ("/signup?user=ana" if mode == "signup" else "/signin") + (f"?ask={ask}" if ask else "")
+    with sync_playwright() as p:
+        b = p.chromium.launch()
+        page = b.new_context().new_page()
+        cdp = page.context.new_cdp_session(page)
+        cdp.send("WebAuthn.enable", {"enableUI": False})
+        auth = cdp.send("WebAuthn.addVirtualAuthenticator", {"options": {
+            "protocol": "ctap2", "transport": "internal", "hasResidentKey": True, "hasUserVerification": True,
+            "isUserVerified": True, "automaticPresenceSimulation": True}})["authenticatorId"]
+        keys = load()
+        for k in keys:
+            cdp.send("WebAuthn.addCredential", {"authenticatorId": auth, "credential": k["cred"]})
+        print(f"browser: opened {page_url}")
+        page.goto(page_url)
+        page.wait_for_function("window.result !== undefined", timeout=20000)
+        r = page.evaluate("window.result")
+        if "error" in r:
+            print(f"browser: {r['error']}")
+        else:
+            print(f"page:    {r['message']}")
+            if "--show-signed" in argv:
+                print("signed data:")
+                print(json.dumps(json.loads(r["clientData"]), indent=1))
+        now = cdp.send("WebAuthn.getCredentials", {"authenticatorId": auth})["credentials"]
+        old = {k["cred"]["credentialId"]: k for k in keys}
+        out = []
+        for c in now:
+            c.pop("largeBlob", None)
+            label = old[c["credentialId"]]["label"] if c["credentialId"] in old else "ana"
+            out.append({"rpId": c["rpId"], "label": label, "cred": c})
+        json.dump(out, open(STORE, "w"))
+        os.chmod(STORE, 0o600)
+        b.close()
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
