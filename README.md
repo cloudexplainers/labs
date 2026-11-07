@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Why Golang Uses Goroutines Instead of Threads](https://youtu.be/e_A4fPAZJS4) | [page](https://cloudexplainers.com/why-golang-uses-goroutines-instead-of-threads/) | [golang-goroutines-threads](golang-goroutines-threads/) |
 | [How to Fix Gemini API Error 429: Resource Exhausted](https://youtu.be/sGn2F15hwPI) | [page](https://cloudexplainers.com/how-to-fix-gemini-api-error-429-resource-exhausted/) | [gemini-api-429-fix](gemini-api-429-fix/) |
 | [Claude Token Pricing Will Finally Make Sense After This](https://youtu.be/7lvf0oq8wsk) | [page](https://cloudexplainers.com/claude-token-pricing-will-finally-make-sense-after-this/) | [claude-token-pricing](claude-token-pricing/) |
 | [Why Python Web Scraping Returns Nothing (and the Fix)](https://youtu.be/k2QHyONLWzI) | [page](https://cloudexplainers.com/why-python-web-scraping-returns-nothing-and-the-fix/) | [python-web-scraping-empty](python-web-scraping-empty/) |
