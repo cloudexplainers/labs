@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Who runs a model on OpenRouter, cheapest first (up to 5): each provider's price in dollars per million tokens.
+# No key needed: OpenRouter's model list is public.   ./providers MODEL
+curl -s "https://openrouter.ai/api/v1/models/$1/endpoints" | jq -r --arg m "$1" '
+  def usd: tonumber * 1e8 | round | "$\(. / 100 | floor).\(. % 100 | tostring | ("0" * (2 - length)) + .)";
+  .data.endpoints | length as $n |
+  (if $n == 1 then "1 provider runs \($m)" else "\($n) providers run \($m)" end),
+  (sort_by(.pricing.prompt | tonumber) | .[:5][] |
+   "  \(.provider_name | .[0:18] | . + " " * (18 - length))  \(.pricing.prompt | usd) in, \(.pricing.completion | usd) out")'

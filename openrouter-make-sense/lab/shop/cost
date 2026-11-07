@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Look up the last request (its id is in reply.json) in OpenRouter's records: who ran it, its tokens (as the
+# model itself counts them), how many of the output tokens were the model's hidden thinking, and what it cost.
+ID=$(jq -r .id reply.json)
+curl -s "https://openrouter.ai/api/v1/generation?id=$ID" -H "Authorization: Bearer $OPENROUTER_API_KEY" | jq -r '.data |
+  "model:          \(.model)",
+  "provider:       \(.provider_name)",
+  "tokens in:      \(.native_tokens_prompt)",
+  "tokens out:     \(.native_tokens_completion)",
+  "  of them, thinking:  \(.native_tokens_reasoning)",
+  "cost:           $\(.total_cost)"'

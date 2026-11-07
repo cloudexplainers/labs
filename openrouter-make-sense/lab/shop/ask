@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# ./ask MODEL, or ./ask MODEL1 MODEL2 (a list: if the first fails, OpenRouter tries the next)
+Q="Describe our Sencha green tea in one calm sentence."
+if [ $# -gt 1 ]; then PICK=$(printf '%s\n' "$@" | jq -R . | jq -cs '{models: .}')
+else PICK=$(jq -cn --arg m "$1" '{model: $m}'); fi
+BODY=$(jq -cn --argjson pick "$PICK" --arg q "$Q" '$pick + {messages: [{role: "user", content: $q}]}')
+curl -s --max-time 120 https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" \
+  -H "Content-Type: application/json" -d "$BODY" > reply.json
+jq -r 'if .error then "error \(.error.code): \(.error.message | sub(" Manage it.*| Please retry.*"; ""))"
+  else (.choices[0].message.content | gsub("^\\s+|\\s+$"; "")), "",
+    "model:    \(.model)", "provider: \(.provider)" end' reply.json

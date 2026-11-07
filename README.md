@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [OpenRouter Will Finally Make Sense After This](https://youtu.be/UcAV6u1p8bk) | [page](https://cloudexplainers.com/openrouter-will-finally-make-sense-after-this/) | [openrouter-make-sense](openrouter-make-sense/) |
 | [How Redis Caching Works](https://youtu.be/vSlS72wiP5o) | [page](https://cloudexplainers.com/how-redis-caching-works/) | [redis-caching-works](redis-caching-works/) |
 | [Gemini API vs Vertex AI: Which One Should You Use?](https://youtu.be/db8pa3RJ9zU) | [page](https://cloudexplainers.com/gemini-api-vs-vertex-ai-which-one-should-you-use/) | [gemini-api-vs-vertex-ai](gemini-api-vs-vertex-ai/) |
 | [How to Fix a Leaked Gemini API Key](https://youtu.be/a-9zojbjyj4) | [page](https://cloudexplainers.com/how-to-fix-a-leaked-gemini-api-key/) | [gemini-leaked-key-fix](gemini-leaked-key-fix/) |
