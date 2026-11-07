@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Gemini API vs Vertex AI: Which One Should You Use?](https://youtu.be/db8pa3RJ9zU) | [page](https://cloudexplainers.com/gemini-api-vs-vertex-ai-which-one-should-you-use/) | [gemini-api-vs-vertex-ai](gemini-api-vs-vertex-ai/) |
 | [How to Fix a Leaked Gemini API Key](https://youtu.be/a-9zojbjyj4) | [page](https://cloudexplainers.com/how-to-fix-a-leaked-gemini-api-key/) | [gemini-leaked-key-fix](gemini-leaked-key-fix/) |
 | [Why Golang Uses Goroutines Instead of Threads](https://youtu.be/e_A4fPAZJS4) | [page](https://cloudexplainers.com/why-golang-uses-goroutines-instead-of-threads/) | [golang-goroutines-threads](golang-goroutines-threads/) |
 | [How to Fix Gemini API Error 429: Resource Exhausted](https://youtu.be/sGn2F15hwPI) | [page](https://cloudexplainers.com/how-to-fix-gemini-api-error-429-resource-exhausted/) | [gemini-api-429-fix](gemini-api-429-fix/) |

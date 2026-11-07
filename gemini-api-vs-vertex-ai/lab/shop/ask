@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# Send one question to one door, and print the answer or the error's code, status and reason.
+#   ./ask gemini         the Gemini API, with the key in GEMINI_API_KEY
+#   ./ask vertex         Vertex AI, with a Google sign-in token (if this laptop has credentials)
+#   ./ask vertex --key   Vertex AI, with the Gemini API key instead
+MODEL=${MODEL:-gemini-3.8-flash}
+BODY='{"contents": [{"role": "user", "parts": [{"text": "Describe our Sencha green tea in one calm sentence."}]}]}'
+if [ "$1" = gemini ]; then
+  URL=https://generativelanguage.googleapis.com/v1beta/models/$MODEL:generateContent
+  AUTH="x-goog-api-key: $GEMINI_API_KEY"
+else
+  URL=https://aiplatform.googleapis.com/v1/projects/ce-vertex-p048/locations/global/publishers/google/models/$MODEL:generateContent
+  if [ "$2" = --key ]; then AUTH="x-goog-api-key: $GEMINI_API_KEY"
+  elif [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ]; then AUTH="Authorization: Bearer $(python get_token.py)"
+  else AUTH="X-No-Credentials: none"; fi
+fi
+curl -s --max-time 100 "$URL" -H "$AUTH" -H "Content-Type: application/json" -d "$BODY" > reply.json
+jq -r 'if .error then "error \(.error.code) \(.error.status) (\(.error.details[0].reason))" else
+  .candidates[0].content.parts[-1].text end' reply.json
