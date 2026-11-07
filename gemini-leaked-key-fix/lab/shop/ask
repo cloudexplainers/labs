@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Ask the Gemini API one question. The key comes from a file that never goes into Git (.env by default).
+source "${KEY_FILE:-.env}"
+curl -s "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent" \
+  -H "x-goog-api-key: $GEMINI_API_KEY" -H "Content-Type: application/json" \
+  -d "$(jq -n --arg p "$*" '{contents: [{parts: [{text: $p}]}]}')" > /tmp/reply.json
+if jq -e .error /tmp/reply.json > /dev/null; then
+  jq -r '"error \(.error.code) \(.error.details[0].reason)"' /tmp/reply.json
+else
+  jq -r '.candidates[0].content.parts[0].text' /tmp/reply.json
+fi

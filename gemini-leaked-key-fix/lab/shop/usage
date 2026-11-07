@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Requests to the Gemini API in the last hour, per API key and answer code (Cloud Monitoring).
+names=$(gcloud services api-keys list --show-deleted --format=json | jq 'map({(.uid): .displayName}) | add')
+curl -s -G -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+  "https://monitoring.googleapis.com/v3/projects/$(gcloud config get project 2>/dev/null)/timeSeries" \
+  --data-urlencode 'filter=metric.type="serviceruntime.googleapis.com/api/request_count" AND resource.labels.service="generativelanguage.googleapis.com"' \
+  --data-urlencode "interval.startTime=$(date -u -v-60M +%FT%TZ)" --data-urlencode "interval.endTime=$(date -u +%FT%TZ)" \
+  --data-urlencode 'aggregation.alignmentPeriod=3600s' --data-urlencode 'aggregation.perSeriesAligner=ALIGN_SUM' |
+jq -r --argjson n "$names" '.timeSeries[] | [($n[.resource.labels.credential_id | sub("apikey:"; "")] // "unknown key"),
+  .metric.labels.response_code, (.points | map(.value.int64Value | tonumber) | add)] | @tsv' |
+sort | awk -F'\t' 'BEGIN {printf "%-12s %-6s %s\n", "KEY", "CODE", "REQUESTS"} {printf "%-12s %-6s %s\n", $1, $2, $3}'
