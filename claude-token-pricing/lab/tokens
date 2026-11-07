@@ -1,0 +1,43 @@
+#!/usr/bin/env python3
+"""Count the tokens in pieces of text, as Claude Sonnet 5.5 sees them.
+
+  tokens "TEXT" ["TEXT" ...]      each text on its own
+  tokens --file FILE              a whole file, with its words and characters
+  tokens --overhead               a near-empty request: what Claude Code itself adds to every request
+
+No API key here, so no token-counting endpoint: we measure. One request through Claude Code (signed in with a
+Claude plan) carries a fixed prompt; each further request carries the same prompt with the text in the middle. The extra input
+tokens Claude reports are the text's tokens.
+"""
+import json, os, subprocess, sys
+
+env = {k: os.environ[k] for k in ("HOME", "USER", "PATH") if k in os.environ}
+env.update(LANG="en_US.UTF-8", TERM="dumb", CLAUDE_CODE_DISABLE_AUTO_MEMORY="1")
+LEAD = "Reply with the single word OK. Ignore this text: <<"
+TAIL = ">> End."
+
+
+def tokens_in(prompt):
+    cmd = ["claude", "-p", prompt, "--model", "sonnet", "--output-format", "json",
+           "--system-prompt", "You reply with the single word OK.", "--tools", "", "--setting-sources", "project",
+           "--strict-mcp-config", "--settings", json.dumps({"autoMemoryEnabled": False})]
+    r = json.loads(subprocess.run(cmd, env=env, capture_output=True, text=True, stdin=subprocess.DEVNULL).stdout)
+    assert list(r["modelUsage"])[0].startswith("claude-sonnet-5-5")
+    u = r["usage"]
+    return u["input_tokens"] + u.get("cache_creation_input_tokens", 0) + u.get("cache_read_input_tokens", 0)
+
+
+base = tokens_in(LEAD + TAIL)
+a = sys.argv[1:]
+if a[0] == "--overhead":
+    print(f"a near-empty request: {base:,} tokens in (Claude Code's own instructions, ~20 of them ours)")
+    sys.exit()
+if a[0] == "--file":
+    text = open(a[1]).read().strip()
+    n = tokens_in(LEAD + text + TAIL) - base
+    print(f"{a[1]}: {len(text.split())} words, {len(text)} characters, {n} tokens")
+    sys.exit()
+w = max(len(t) for t in a) + 2
+for t in a:
+    n = tokens_in(LEAD + t + TAIL) - base
+    print(f"{json.dumps(t, ensure_ascii=False):<{w}} {n:>3} token{'s' if n != 1 else ''}")

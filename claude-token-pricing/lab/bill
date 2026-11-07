@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Work out what a request costs on the Claude API, line by line, at list prices (see bill.py).
+
+  bill MODEL NEW WRITE READ OUT          one request, with and without caching
+  bill --month N MODEL IN OUT            N requests a month: standard price and the Batch API's half price
+"""
+import os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from bill import PRICES, cost
+
+a = sys.argv[1:]
+if a[0] == "--month":
+    n, m, tin, tout = int(a[1]), a[2], int(a[3]), int(a[4])
+    std, bat = n * cost(m, tin, 0, 0, tout), n * cost(m, tin, 0, 0, tout, batch=True)
+    print(f"{n:,} requests on {m}, {tin:,} tokens in and {tout:,} out each:")
+    print(f"  standard    ${std:>8,.2f}")
+    print(f"  Batch API   ${bat:>8,.2f}   (half price, answers within 24 hours)")
+    sys.exit()
+m, fresh, write, read, out = a[0], *map(int, a[1:])
+pi, pw, _, pr, po = PRICES[m]
+rows = [("new input", fresh, pi), ("cache write", write, pw), ("cache read", read, pr), ("output", out, po)]
+for name, n, p in rows:
+    print(f"{name:<12}{n:>7,} x ${p:>5.2f} per million = ${n * p / 1e6:.5f}")
+total = cost(m, fresh, write, read, out)
+plain = cost(m, fresh + write + read, 0, 0, out)
+print(f"{'total on ' + m + ':':<43}${total:.5f}")
+print(f"{'with no caching:':<43}${plain:.5f}")

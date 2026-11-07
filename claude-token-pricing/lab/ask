@@ -1,0 +1,53 @@
+#!/usr/bin/env python3
+"""Ask Kettle & Bean's support assistant a question, and print the bill for that one request.
+
+  ask "QUESTION"                 a new conversation
+  ask --chat NAME "QUESTION"     continue the conversation called NAME (the whole history is sent again)
+
+The assistant is Claude Sonnet 5.5 with the shop's handbook (handbook.md) as its system prompt, sent through
+Claude Code (headless) signed in with a Claude plan; no API key is read or used. Claude Code reports the tokens
+of every request, split into uncached input, cache writes and cache reads, plus output; the cost line uses the
+API's list prices (bill.py), so it shows what the same request would cost on the API.
+"""
+import json, os, subprocess, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from bill import cost
+
+args = sys.argv[1:]
+chat = None
+if args[0] == "--chat":
+    chat, args = args[1], args[2:]
+question = args[0]
+env = {k: os.environ[k] for k in ("HOME", "USER", "PATH") if k in os.environ}
+env.update(LANG="en_US.UTF-8", TERM="dumb", CLAUDE_CODE_DISABLE_AUTO_MEMORY="1")
+os.makedirs(".log", exist_ok=True)
+state = f".log/chat-{chat}.json" if chat else None
+cmd = ["claude", "-p", question, "--model", "sonnet", "--output-format", "json",
+       "--system-prompt", open("handbook.md").read() + "\nYou have no tools in this session.",
+       "--tools", "", "--setting-sources", "project", "--strict-mcp-config",
+       "--settings", json.dumps({"autoMemoryEnabled": False})]
+turn, before = 1, 0.0
+if state and os.path.exists(state):
+    s = json.load(open(state))
+    cmd += ["--resume", s["session"]]
+    turn, before = s["turn"] + 1, s["cc_total"]
+r = json.loads(subprocess.run(cmd, env=env, capture_output=True, text=True, stdin=subprocess.DEVNULL).stdout)
+u = r["usage"]
+model = list(r["modelUsage"])[0]
+assert model.startswith("claude-sonnet-5-5"), model
+fresh, write, read, out = (u["input_tokens"], u.get("cache_creation_input_tokens", 0),
+                           u.get("cache_read_input_tokens", 0), u["output_tokens"])
+ours = cost("sonnet-5.5", fresh, write, read, out)
+# Claude Code reports the session's running total; this request is the difference. Same maths as ours.
+assert abs(ours - (r["total_cost_usd"] - before)) < 0.000005, (ours, r["total_cost_usd"], before)
+if state:
+    json.dump({"session": r["session_id"], "turn": turn, "cc_total": r["total_cost_usd"]}, open(state, "w"))
+log = {"turn": turn, "fresh": fresh, "write": write, "read": read, "out": out, "cost": ours,
+       "cc_cost": r["total_cost_usd"] - before}
+with open(".log/ask.jsonl", "a") as f:
+    f.write(json.dumps(log) + "\n")
+print(r["result"].strip())
+print()
+label = f"turn {turn}: " if chat else ""
+print(f"{label}tokens in {fresh + write + read:,} (new {fresh:,} · cache write {write:,} · cache read {read:,})"
+      f" · out {out:,} · ${ours:.4f}")

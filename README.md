@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Claude Token Pricing Will Finally Make Sense After This](https://youtu.be/7lvf0oq8wsk) | [page](https://cloudexplainers.com/claude-token-pricing-will-finally-make-sense-after-this/) | [claude-token-pricing](claude-token-pricing/) |
 | [Why Python Web Scraping Returns Nothing (and the Fix)](https://youtu.be/k2QHyONLWzI) | [page](https://cloudexplainers.com/why-python-web-scraping-returns-nothing-and-the-fix/) | [python-web-scraping-empty](python-web-scraping-empty/) |
 | [Python uv vs pip: Which One Should You Use?](https://youtu.be/mSGSTPkgP0w) | [page](https://cloudexplainers.com/python-uv-vs-pip-which-one-should-you-use/) | [python-uv-vs-pip](python-uv-vs-pip/) |
 | [Python Automation: Full Tutorial for Beginners](https://youtu.be/Oq0RlbCNMqA) | [page](https://cloudexplainers.com/python-automation-full-tutorial-for-beginners/) | [python-automation-tutorial](python-automation-tutorial/) |
