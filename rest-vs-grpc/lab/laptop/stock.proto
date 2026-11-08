@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service Stock {
+  rpc GetTea (TeaRequest) returns (Tea);
+  rpc WatchStock (TeaRequest) returns (stream Tea);
+}
+
+message TeaRequest {
+  string name = 1;
+}
+
+message Tea {
+  string name = 1;
+  int32 stock = 2;
+  int32 cents = 3;
+}
