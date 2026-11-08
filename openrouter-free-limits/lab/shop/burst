@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# ./burst N MODEL: send N requests one after another, as fast as they come back, like a coding agent or a retry
+# loop does. One line per request: its number, seconds since the start, the HTTP status, and the error if any.
+N=$1; M=$2; start=$(date +%s)
+BODY=$(jq -cn --arg m "$M" '{model: $m, max_tokens: 8, messages: [{role: "user", content: "Say ok."}]}')
+for i in $(seq 1 "$N"); do
+  code=$(curl -s --max-time 120 -o r.json -w '%{http_code}' https://openrouter.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $OPENROUTER_API_KEY" -H "Content-Type: application/json" -d "$BODY")
+  msg=$(jq -r '.error.message // "ok" | .[0:70]' r.json 2>/dev/null)
+  printf '#%-3s %3ss  %s  %s\n' "$i" "$(( $(date +%s) - start ))" "$code" "$msg"
+done

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# ./ask MODEL: one question to one model. On an error, prints the code, the message and OpenRouter's limit headers.
+Q="Describe our Sencha green tea in one short sentence."
+BODY=$(jq -cn --arg m "$1" --arg q "$Q" '{model: $m, max_tokens: 400, messages: [{role: "user", content: $q}]}')
+curl -s --max-time 120 -D headers.txt https://openrouter.ai/api/v1/chat/completions \
+  -H "Authorization: Bearer $OPENROUTER_API_KEY" -H "Content-Type: application/json" -d "$BODY" > reply.json
+jq -r 'if .error then "error \(.error.code): \(.error.message)"
+  else (.choices[0].message.content // "" | gsub("^\\s+|\\s+$"; "")), "", "model: \(.model)" end' reply.json
+grep -i '^x-ratelimit' headers.txt | tr -d '\r' || true

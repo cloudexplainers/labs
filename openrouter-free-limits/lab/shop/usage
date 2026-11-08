@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# What OpenRouter counts for this key today. Reading it is free: it is not a model request.
+curl -s https://openrouter.ai/api/v1/key -H "Authorization: Bearer $OPENROUTER_API_KEY" | jq -r '.data |
+  "free tier:        \(.is_free_tier)",
+  "free requests:    \(.free_model_daily_requests.used) used of \(.free_model_daily_requests.limit) today",
+  "left today:       \(.free_model_daily_requests.remaining)"'
