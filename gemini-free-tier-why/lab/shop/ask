@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# Send one prompt to the Gemini API (model in $MODEL). Prints the answer,
+# or the error code, and keeps the whole error in error.json.
+MODEL=${MODEL:-gemini-3.6-flash}
+curl -s --max-time 100 "https://generativelanguage.googleapis.com/v1beta/models/$MODEL:generateContent" \
+  -H "x-goog-api-key: $GEMINI_API_KEY" -H "Content-Type: application/json" \
+  -d "$(jq -n --arg p "$*" '{contents: [{parts: [{text: $p}]}]}')" > /tmp/reply.json
+if jq -e .error /tmp/reply.json > /dev/null; then
+  cp /tmp/reply.json error.json
+  jq -r '"error \(.error.code) \(.error.status)"' error.json
+else
+  jq -r '.candidates[0].content.parts[0].text' /tmp/reply.json
+fi
