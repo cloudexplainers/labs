@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Every Python Concept for Beginners in 10 Minutes](https://youtu.be/uGg8J7grQjw) | [page](https://cloudexplainers.com/every-python-concept-for-beginners-in-10-minutes/) | [python-concepts-every](python-concepts-every/) |
 | [Why OpenRouter Free Models Hit Their Limit So Fast](https://youtu.be/72fAhHf_074) | [page](https://cloudexplainers.com/why-openrouter-free-models-hit-their-limit-so-fast/) | [openrouter-free-limits](openrouter-free-limits/) |
 | [Why Your Gemini API Free Tier Runs Out So Fast](https://youtu.be/1O2j0HIYn90) | [page](https://cloudexplainers.com/why-your-gemini-api-free-tier-runs-out-so-fast/) | [gemini-free-tier-why](gemini-free-tier-why/) |
 | [OpenRouter Will Finally Make Sense After This](https://youtu.be/UcAV6u1p8bk) | [page](https://cloudexplainers.com/openrouter-will-finally-make-sense-after-this/) | [openrouter-make-sense](openrouter-make-sense/) |
