@@ -1,0 +1,10 @@
+# Ana's shop server: a stock Ubuntu 24.04 with nginx. Ana's account has sudo, like a cloud server's first user.
+FROM ubuntu:24.04
+RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install -y -qq nginx openssl sudo curl ca-certificates >/dev/null \
+ && rm -rf /var/lib/apt/lists/* && useradd -m -s /bin/bash ana && echo 'ana ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/ana \
+ && rm -f /etc/nginx/sites-enabled/default
+COPY site/ /var/www/shop/
+COPY make_certs.sh /usr/local/sbin/make_certs.sh
+COPY shop.conf /etc/nginx/sites-available/shop
+RUN ln -s /etc/nginx/sites-available/shop /etc/nginx/sites-enabled/shop && mkdir -p /var/www/ca
+CMD ["sleep", "infinity"]

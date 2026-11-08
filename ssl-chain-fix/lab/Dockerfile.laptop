@@ -1,0 +1,8 @@
+# A laptop: Ubuntu 24.04 with curl, openssl, Ubuntu's Python requests (it trusts the system's certificate store)
+# and a real Chromium (Playwright's build).
+FROM mcr.microsoft.com/playwright/python:v1.55.0-noble
+RUN pip install --no-cache-dir --break-system-packages playwright==1.55.0 \
+ && apt-get update -qq && apt-get install -y -qq libnss3-tools curl sudo python3-requests >/dev/null && rm -rf /var/lib/apt/lists/* \
+ && for u in ana ben; do useradd -m -s /bin/bash $u && echo "$u ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$u; done
+COPY browser /usr/local/bin/browser
+COPY price_check.py /usr/local/share/price_check.py
