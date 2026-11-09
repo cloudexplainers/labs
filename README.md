@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How Linux systemd Works](https://youtu.be/Z50E2qS6Yg0) | [page](https://cloudexplainers.com/how-linux-systemd-works/) | [linux-systemd-works](linux-systemd-works/) |
 | [How to Fix 'Windows Cannot Access' Network Share Errors (SMB)](https://youtu.be/onf1rzyfieM) | [page](https://cloudexplainers.com/how-to-fix-windows-cannot-access-network-share-errors-smb/) | [windows-share-fix](windows-share-fix/) |
 | [REST vs gRPC: Which One Should You Use?](https://youtu.be/6wxOAufNZzM) | [page](https://cloudexplainers.com/rest-vs-grpc-which-one-should-you-use/) | [rest-vs-grpc](rest-vs-grpc/) |
 | [How to Fix SSL Certificate Chain Errors (Missing Intermediate)](https://youtu.be/ZjkJv_WmRqw) | [page](https://cloudexplainers.com/how-to-fix-ssl-certificate-chain-errors-missing-intermediate/) | [ssl-chain-fix](ssl-chain-fix/) |

@@ -1,0 +1,12 @@
+[Unit]
+Description=Ana's tea shop
+After=network.target
+
+[Service]
+User=ana
+WorkingDirectory=/home/ana/teashop
+ExecStart=/usr/bin/python3 app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
