@@ -1,0 +1,13 @@
+# Ana's tea shop server for P116: a stock Ubuntu 24.04 with systemd running as PID 1, so journald, rsyslog and
+# logrotate run as they do on a real Ubuntu server. rsyslog and logrotate are the packages Ubuntu Server installs.
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends systemd systemd-sysv dbus sudo curl \
+      iproute2 procps python3 less rsyslog logrotate file \
+ && rm -f /usr/sbin/policy-rc.d \
+ && userdel -r ubuntu \
+ && useradd -m -s /bin/bash ana && echo 'ana:tea-for-two' | chpasswd && adduser ana sudo >/dev/null \
+ && adduser ana adm >/dev/null \
+ && systemctl mask getty@tty1.service console-getty.service
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]

@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Linux Logs: syslog vs journald](https://youtu.be/k1eQkzFRNgw) | [page](https://cloudexplainers.com/linux-logs-syslog-vs-journald/) | [linux-logs-syslog-journald](linux-logs-syslog-journald/) |
 | [Docker vs Docker Compose: Which One Should You Use?](https://youtu.be/46aVYNUZxJA) | [page](https://cloudexplainers.com/docker-vs-docker-compose-which-one-should-you-use/) | [docker-vs-compose](docker-vs-compose/) |
 | [How to Fix Docker Compose Containers That Can't Talk to Each Other](https://youtu.be/J1OC8eJhnmA) | [page](https://cloudexplainers.com/how-to-fix-docker-compose-containers-that-can-t-talk-to-each-other/) | [docker-compose-network-fix](docker-compose-network-fix/) |
 | [Django Full Tutorial for Beginners](https://youtu.be/EuN2ndLuLvs) | [page](https://cloudexplainers.com/django-full-tutorial-for-beginners/) | [django-tutorial](django-tutorial/) |
