@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_PASSWORD: kettle-lab
+    ports:
+      - "5433:5432"
+    volumes:
+      - ./teas.sql:/docker-entrypoint-initdb.d/teas.sql
+      - data:/var/lib/postgresql
+  web:
+    image: teashop:1
+    environment:
+      DB_HOST: localhost
+      DB_PORT: "5432"
+      DB_PASSWORD: kettle-lab
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+volumes:
+  data:

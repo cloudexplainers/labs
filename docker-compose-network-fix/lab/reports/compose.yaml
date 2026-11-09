@@ -1,0 +1,7 @@
+services:
+  report:
+    image: teashop:1
+    command: python report.py
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: kettle-lab
