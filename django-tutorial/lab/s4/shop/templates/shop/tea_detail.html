@@ -1,0 +1,9 @@
+{% extends "shop/base.html" %}
+
+{% block title %}{{ tea.name }}{% endblock %}
+
+{% block content %}
+<h2>{{ tea.name }}</h2>
+<p>${{ tea.price }} per bag, {{ tea.stock }} in stock.</p>
+<p><a href="{% url 'tea_list' %}">All teas</a></p>
+{% endblock %}

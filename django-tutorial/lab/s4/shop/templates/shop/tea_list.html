@@ -1,0 +1,11 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+<ul>
+  {% for tea in teas %}
+    <li><a href="{% url 'tea_detail' tea.slug %}">{{ tea.name }}</a>: ${{ tea.price }}</li>
+  {% empty %}
+    <li>No teas yet.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
