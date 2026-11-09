@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix 'Windows Cannot Access' Network Share Errors (SMB)](https://youtu.be/onf1rzyfieM) | [page](https://cloudexplainers.com/how-to-fix-windows-cannot-access-network-share-errors-smb/) | [windows-share-fix](windows-share-fix/) |
 | [REST vs gRPC: Which One Should You Use?](https://youtu.be/6wxOAufNZzM) | [page](https://cloudexplainers.com/rest-vs-grpc-which-one-should-you-use/) | [rest-vs-grpc](rest-vs-grpc/) |
 | [How to Fix SSL Certificate Chain Errors (Missing Intermediate)](https://youtu.be/ZjkJv_WmRqw) | [page](https://cloudexplainers.com/how-to-fix-ssl-certificate-chain-errors-missing-intermediate/) | [ssl-chain-fix](ssl-chain-fix/) |
 | [Every Python Concept for Beginners in 10 Minutes](https://youtu.be/uGg8J7grQjw) | [page](https://cloudexplainers.com/every-python-concept-for-beginners-in-10-minutes/) | [python-concepts-every](python-concepts-every/) |
