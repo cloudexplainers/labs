@@ -1,0 +1,22 @@
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_PASSWORD: tea-lab-only
+    volumes:
+      - dbdata:/var/lib/postgresql
+    healthcheck:
+      test: pg_isready -U postgres
+      interval: 2s
+  app:
+    image: shop-app
+    ports:
+      - "8080:8000"
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: tea-lab-only
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  dbdata:
