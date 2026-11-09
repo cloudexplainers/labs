@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix a Linux systemd Service That Won't Start](https://youtu.be/uDZlfKJ8FMk) | [page](https://cloudexplainers.com/how-to-fix-a-linux-systemd-service-that-won-t-start/) | [linux-systemd-service-fix](linux-systemd-service-fix/) |
 | [Linux Logs: syslog vs journald](https://youtu.be/k1eQkzFRNgw) | [page](https://cloudexplainers.com/linux-logs-syslog-vs-journald/) | [linux-logs-syslog-journald](linux-logs-syslog-journald/) |
 | [Docker vs Docker Compose: Which One Should You Use?](https://youtu.be/46aVYNUZxJA) | [page](https://cloudexplainers.com/docker-vs-docker-compose-which-one-should-you-use/) | [docker-vs-compose](docker-vs-compose/) |
 | [How to Fix Docker Compose Containers That Can't Talk to Each Other](https://youtu.be/J1OC8eJhnmA) | [page](https://cloudexplainers.com/how-to-fix-docker-compose-containers-that-can-t-talk-to-each-other/) | [docker-compose-network-fix](docker-compose-network-fix/) |

@@ -1,0 +1,13 @@
+# Ana's tea shop server for P101: a stock Ubuntu 24.04 with systemd running as PID 1 (systemctl, journalctl and
+# reboots work for real), Python 3 from the archive, and a sudo user ana. Docker's policy-rc.d is removed, as in
+# P074. Ana's app, her ~/.bashrc line and her unit file are copied in by the demo, the way she'd write them in nano.
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends systemd systemd-sysv dbus sudo curl \
+      iproute2 procps psmisc python3 less nano \
+ && rm -f /usr/sbin/policy-rc.d \
+ && userdel -r ubuntu \
+ && useradd -m -s /bin/bash ana && echo 'ana:tea-for-two' | chpasswd && adduser ana sudo >/dev/null \
+ && systemctl mask getty@tty1.service console-getty.service
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]
