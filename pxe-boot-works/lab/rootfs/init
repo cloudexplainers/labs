@@ -1,0 +1,18 @@
+#!/bin/busybox sh
+# The whole operating system of a classroom PC: busybox and this script, loaded into memory over the network.
+/bin/busybox --install -s /bin
+mount -t proc proc /proc
+mount -t sysfs sys /sys
+mount -t devtmpfs dev /dev
+# BOOTIF=01-52-54-00-00-00-07 (from PXELINUX) or 52:54:00:00:00:08 (from GRUB): the network card that booted.
+MAC=$(tr ' ' '\n' < /proc/cmdline | sed -n 's/^BOOTIF=//p' | tr ':' '-')
+NAME=lab-pc-${MAC##*-}
+ROLE=$(tr ' ' '\n' < /proc/cmdline | sed -n 's/^lab\.role=//p')
+hostname "$NAME"
+echo
+echo "$NAME: Linux is running. No disk was read."
+echo "Set up as: $ROLE"
+echo
+export PS1="root@$NAME:~# " HOME=/root
+cd /root
+exec setsid cttyhack sh

@@ -1,0 +1,7 @@
+SERIAL 0 115200
+DEFAULT classroom
+LABEL classroom
+  KERNEL http://10.20.0.1/linux
+  INITRD http://10.20.0.1/initrd.img
+  APPEND console=ttyS0 quiet lab.role=student
+  IPAPPEND 2

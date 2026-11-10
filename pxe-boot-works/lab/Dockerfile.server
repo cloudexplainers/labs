@@ -1,0 +1,16 @@
+# The school's PXE server for P118: a stock Ubuntu 24.04 with systemd as PID 1, dnsmasq (DHCP + TFTP) and nginx
+# (HTTP) from the archive, PXELINUX from the archive, and a sudo user ana (the school's IT person).
+# QEMU and its firmware (SeaBIOS + the iPXE network boot ROMs, and OVMF for UEFI) are here too, because the
+# classroom PCs are virtual PCs plugged into this server's "classroom" network; they are not part of the server.
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends systemd systemd-sysv dbus sudo curl \
+      iproute2 iptables procps psmisc less nano dnsmasq nginx pxelinux syslinux-common \
+      qemu-system-x86 ipxe-qemu ovmf \
+ && rm -f /usr/sbin/policy-rc.d \
+ && userdel -r ubuntu \
+ && useradd -m -s /bin/bash ana && echo 'ana:lab-boot-07' | chpasswd && adduser ana sudo >/dev/null \
+ && systemctl disable dnsmasq \
+ && systemctl mask getty@tty1.service console-getty.service
+STOPSIGNAL SIGRTMIN+3
+CMD ["/sbin/init"]
