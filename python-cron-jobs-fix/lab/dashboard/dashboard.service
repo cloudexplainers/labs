@@ -1,0 +1,11 @@
+[Unit]
+Description=Bike rental dashboard (lab)
+
+[Service]
+User=dash
+Environment=BIKES_API_KEY=bk_demo_4821
+ExecStart=/usr/bin/python3 /opt/dashboard/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
