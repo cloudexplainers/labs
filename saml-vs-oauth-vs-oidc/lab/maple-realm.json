@@ -1,0 +1,69 @@
+{
+ "realm": "maple",
+ "enabled": true,
+ "displayName": "Maple ID",
+ "sslRequired": "all",
+ "accessTokenLifespan": 300,
+ "accessCodeLifespan": 60,
+ "users": [
+  {
+   "username": "ana",
+   "enabled": true,
+   "email": "ana@clinic.test",
+   "emailVerified": true,
+   "firstName": "Ana",
+   "lastName": "Reyes",
+   "credentials": [{"type": "password", "value": "mint-floss-42", "temporary": false}]
+  }
+ ],
+ "clients": [
+  {
+   "clientId": "remindly",
+   "name": "Remindly",
+   "enabled": true,
+   "protocol": "openid-connect",
+   "publicClient": false,
+   "clientAuthenticatorType": "client-secret",
+   "secret": "lab-only-remindly-secret",
+   "redirectUris": ["https://remindly.test/callback"],
+   "webOrigins": ["https://remindly.test"],
+   "standardFlowEnabled": true,
+   "implicitFlowEnabled": false,
+   "directAccessGrantsEnabled": false,
+   "consentRequired": true,
+   "fullScopeAllowed": false,
+   "attributes": {"pkce.code.challenge.method": "S256"},
+   "defaultClientScopes": ["basic"],
+   "optionalClientScopes": ["profile", "email"]
+  },
+  {
+   "clientId": "https://payroll.test/saml",
+   "name": "Payroll",
+   "enabled": true,
+   "protocol": "saml",
+   "redirectUris": ["https://payroll.test/saml/acs"],
+   "frontchannelLogout": true,
+   "fullScopeAllowed": false,
+   "attributes": {
+    "saml.assertion.signature": "true",
+    "saml.server.signature": "false",
+    "saml.client.signature": "false",
+    "saml.force.post.binding": "true",
+    "saml.authnstatement": "true",
+    "saml_name_id_format": "email",
+    "saml_force_name_id_format": "true",
+    "saml.signature.algorithm": "RSA_SHA256",
+    "saml_assertion_consumer_url_post": "https://payroll.test/saml/acs"
+   },
+   "defaultClientScopes": [],
+   "protocolMappers": [
+    {"name": "name", "protocol": "saml", "protocolMapper": "saml-user-property-mapper",
+     "config": {"user.attribute": "firstName", "attribute.name": "firstName", "friendly.name": "firstName",
+                "attribute.nameformat": "Basic"}},
+    {"name": "surname", "protocol": "saml", "protocolMapper": "saml-user-property-mapper",
+     "config": {"user.attribute": "lastName", "attribute.name": "lastName", "friendly.name": "lastName",
+                "attribute.nameformat": "Basic"}}
+   ]
+  }
+ ]
+}

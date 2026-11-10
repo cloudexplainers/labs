@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+"""saml-check [--change OLD NEW]: run Payroll's signature check on the saved SAML response again.
+
+With --change, the check runs on a copy in which the text OLD was replaced by NEW (the saved file is not
+touched). Only the signature step: the saved response's short time window has passed by now."""
+import sys
+sys.path.insert(0, "/srv")
+import samlcheck
+
+xml = open("/srv/data/saml_response.xml", "rb").read()
+if sys.argv[1:2] == ["--change"]:
+    old, new = sys.argv[2].encode(), sys.argv[3].encode()
+    n = xml.count(old)
+    xml = xml.replace(old, new)
+    print(f"copy: {n} place(s) changed, {old.decode()} -> {new.decode()}")
+try:
+    a = samlcheck.facts(samlcheck.verified_assertion(xml))
+    print(f"signature valid: NameID {a['name_id']}")
+except samlcheck.Refused as e:
+    print(f"REFUSED: {e}")
+    sys.exit(1)

@@ -1,0 +1,6 @@
+# Ana's laptop: a real Chromium (Playwright's build) driven by the `browser` command.
+FROM mcr.microsoft.com/playwright/python:v1.55.0-noble
+RUN pip install --no-cache-dir --break-system-packages playwright==1.55.0 \
+ && apt-get update -qq && apt-get install -y -qq libnss3-tools curl jq >/dev/null && rm -rf /var/lib/apt/lists/* \
+ && useradd -m -s /bin/bash ana
+COPY browser /usr/local/bin/browser

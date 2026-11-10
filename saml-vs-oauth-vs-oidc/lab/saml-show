@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+"""saml-show: the facts in the SAML response Payroll last accepted (from /srv/data/saml_response.xml)."""
+import sys
+sys.path.insert(0, "/srv")
+import samlcheck
+
+xml = open("/srv/data/saml_response.xml", "rb").read()
+a = samlcheck.facts(samlcheck.verified_assertion(xml))
+print("format:      XML,", f"{len(xml):,} characters")
+print("Issuer:     ", a["issuer"])
+print("NameID:     ", a["name_id"])
+for k, v in a["attributes"].items():
+    print(f"{k + ':':<13}{v}")
+print("Audience:   ", a["audience"])
+print("NotBefore:  ", a["not_before"])
+print("NotOnOrAfter:", a["not_on_or_after"])
+print("Signature:  ", "valid, " + a["signature_method"])

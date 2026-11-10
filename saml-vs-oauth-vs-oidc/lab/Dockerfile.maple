@@ -1,0 +1,4 @@
+# Maple ID: the lab's sign-in service (playing the part of a Google or Microsoft account), Keycloak with one realm,
+# one user, one SAML app (Payroll) and one OAuth / OpenID Connect app (Remindly).
+FROM quay.io/keycloak/keycloak:26.8.2
+COPY maple-realm.json /opt/keycloak/data/import/maple-realm.json

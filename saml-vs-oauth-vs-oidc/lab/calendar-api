@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""calendar-api GET|POST /events [--token access|id|none]: call Maple's calendar API as Remindly would.
+
+--token access (default): the access token Remindly holds; id: the ID token instead; none: no token."""
+import json
+import sys
+
+import requests
+
+BASE = "https://calendar.maple.test"
+CA = "/etc/ssl/certs/ca-certificates.crt"
+args = sys.argv[1:]
+which = "access"
+if "--token" in args:
+    i = args.index("--token")
+    which = args[i + 1]
+    del args[i:i + 2]
+if len(args) != 2 or args[0] not in ("GET", "POST") or which not in ("access", "id", "none"):
+    sys.exit("usage: calendar-api GET|POST /events [--token access|id|none]")
+method, path = args
+headers = {}
+print(f"{method} {BASE}{path}")
+if which == "none":
+    print("(no Authorization header)")
+else:
+    tok = open(f"/srv/data/{which}_token").read().strip()
+    headers["Authorization"] = "Bearer " + tok
+    print(f"Authorization: Bearer {tok[:12]}... (the {'ID' if which == 'id' else 'access'} token)")
+r = requests.request(method, BASE + path, headers=headers, verify=CA,
+                     json={"time": "16:00", "what": "Reminder call"} if method == "POST" else None)
+print(f"-> {r.status_code}")
+try:
+    body = r.json()
+    if "events" in body:
+        for e in body["events"]:
+            print(f"   {e['time']}  {e['what']}")
+    else:
+        print(json.dumps(body, indent=1))
+except ValueError:
+    print(r.text[:200])
