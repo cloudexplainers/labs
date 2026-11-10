@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Lists what the shop has stored in Redis (lab only): every key, what it holds, and its seconds left."""
+import redis
+
+r = redis.Redis(decode_responses=True)
+keys = sorted(r.scan_iter())
+print(f"{len(keys)} key(s) stored")
+for k in keys:
+    kind, _, rest = k.partition(":")
+    short = f"{kind}:{rest[:8]}…"
+    print(f"  {short:<18} {r.get(k):<34} expires in {r.ttl(k)} s")

@@ -1,0 +1,6 @@
+# The shop's API servers (api1 signs and stores, api2 only verifies): Python 3.12, PyJWT and the Redis client.
+FROM python:3.12-slim
+RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends procps >/dev/null && rm -rf /var/lib/apt/lists/* \
+ && pip install --no-cache-dir "pyjwt[crypto]==2.10.1" "redis==6.4.0"
+COPY shop.py /srv/shop.py
+CMD ["python3", "-u", "/srv/shop.py"]

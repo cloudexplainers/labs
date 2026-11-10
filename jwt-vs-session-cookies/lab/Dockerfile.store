@@ -1,0 +1,5 @@
+# The session store: Redis 8, plus a small lab script that lists what is stored.
+FROM redis:8
+RUN apt-get update -qq && apt-get install -y -qq --no-install-recommends python3 python3-redis >/dev/null \
+ && rm -rf /var/lib/apt/lists/*
+COPY show-store /usr/local/bin/show-store
