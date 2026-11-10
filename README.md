@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Linux Bash Scripting: Full Tutorial for Beginners](https://youtu.be/U2J9V9l8EjU) | [page](https://cloudexplainers.com/linux-bash-scripting-full-tutorial-for-beginners/) | [linux-bash-scripting](linux-bash-scripting/) |
 | [How PXE Network Boot Works](https://youtu.be/BcKKoGsCpPQ) | [page](https://cloudexplainers.com/how-pxe-network-boot-works/) | [pxe-boot-works](pxe-boot-works/) |
 | [How Active Directory Works](https://youtu.be/LEO35h3DJAw) | [page](https://cloudexplainers.com/how-active-directory-works/) | [active-directory-works](active-directory-works/) |
 | [How to Fix a Linux systemd Service That Won't Start](https://youtu.be/uDZlfKJ8FMk) | [page](https://cloudexplainers.com/how-to-fix-a-linux-systemd-service-that-won-t-start/) | [linux-systemd-service-fix](linux-systemd-service-fix/) |

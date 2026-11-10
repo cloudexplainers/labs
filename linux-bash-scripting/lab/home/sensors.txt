@@ -1,0 +1,4 @@
+roof
+garden
+north field
+cellar
