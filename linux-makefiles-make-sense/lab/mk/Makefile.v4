@@ -1,0 +1,15 @@
+ferry: main.o times.o fares.o
+	cc -o ferry main.o times.o fares.o
+
+main.o: main.c times.h fares.h
+	cc -c main.c
+
+times.o: times.c times.h
+	cc -c times.c
+
+fares.o: fares.c fares.h
+	cc -c fares.c
+
+.PHONY: clean
+clean:
+	rm -f ferry *.o

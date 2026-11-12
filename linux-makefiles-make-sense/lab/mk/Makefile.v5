@@ -1,0 +1,20 @@
+CC = cc
+CFLAGS = -Wall -O2
+OBJS = main.o times.o fares.o
+
+ferry: $(OBJS)
+	$(CC) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+main.o: times.h fares.h
+times.o: times.h
+fares.o: fares.h
+
+.PHONY: clean run
+clean:
+	rm -f ferry $(OBJS)
+
+run: ferry
+	./ferry

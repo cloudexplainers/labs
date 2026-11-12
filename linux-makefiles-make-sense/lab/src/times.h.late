@@ -1,0 +1,4 @@
+#define LAST_FERRY "22:15"
+
+const char *next_ferry(void);
+const char *last_ferry(void);

@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Linux Makefiles Will Finally Make Sense After This](https://youtu.be/GVKhuIO-ULk) | [page](https://cloudexplainers.com/linux-makefiles-will-finally-make-sense-after-this/) | [linux-makefiles-make-sense](linux-makefiles-make-sense/) |
 | [SAML vs OAuth vs OpenID Connect: What's the Difference?](https://youtu.be/cG0xZkPTm74) | [page](https://cloudexplainers.com/saml-vs-oauth-vs-openid-connect-what-s-the-difference/) | [saml-vs-oauth-vs-oidc](saml-vs-oauth-vs-oidc/) |
 | [How to Fix Python cron Jobs That Never Run](https://youtu.be/ZIym0xc1Pjs) | [page](https://cloudexplainers.com/how-to-fix-python-cron-jobs-that-never-run/) | [python-cron-jobs-fix](python-cron-jobs-fix/) |
 | [Linux Bash Scripting: Full Tutorial for Beginners](https://youtu.be/U2J9V9l8EjU) | [page](https://cloudexplainers.com/linux-bash-scripting-full-tutorial-for-beginners/) | [linux-bash-scripting](linux-bash-scripting/) |

@@ -1,0 +1,11 @@
+ferry: main.o times.o fares.o
+	cc -o ferry main.o times.o fares.o
+
+main.o: main.c
+	cc -c main.c
+
+times.o: times.c
+	cc -c times.c
+
+fares.o: fares.c
+	cc -c fares.c
