@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [The Python Roadmap for Beginners](https://youtu.be/dYPUyr3fxIU) | [page](https://cloudexplainers.com/the-python-roadmap-for-beginners/) | [python-roadmap](python-roadmap/) |
 | [Golang REST API with Gin: Full Tutorial for Beginners](https://youtu.be/IbJs0sDK8Sk) | [page](https://cloudexplainers.com/golang-rest-api-with-gin-full-tutorial-for-beginners/) | [golang-gin-rest-api](golang-gin-rest-api/) |
 | [How a WireGuard VPN Network Works](https://youtu.be/xkpU64w1QEk) | [page](https://cloudexplainers.com/how-a-wireguard-vpn-network-works/) | [wireguard-vpn-works](wireguard-vpn-works/) |
 | [Linux Makefiles Will Finally Make Sense After This](https://youtu.be/GVKhuIO-ULk) | [page](https://cloudexplainers.com/linux-makefiles-will-finally-make-sense-after-this/) | [linux-makefiles-make-sense](linux-makefiles-make-sense/) |
