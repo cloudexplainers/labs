@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How a WireGuard VPN Network Works](https://youtu.be/xkpU64w1QEk) | [page](https://cloudexplainers.com/how-a-wireguard-vpn-network-works/) | [wireguard-vpn-works](wireguard-vpn-works/) |
 | [Linux Makefiles Will Finally Make Sense After This](https://youtu.be/GVKhuIO-ULk) | [page](https://cloudexplainers.com/linux-makefiles-will-finally-make-sense-after-this/) | [linux-makefiles-make-sense](linux-makefiles-make-sense/) |
 | [SAML vs OAuth vs OpenID Connect: What's the Difference?](https://youtu.be/cG0xZkPTm74) | [page](https://cloudexplainers.com/saml-vs-oauth-vs-openid-connect-what-s-the-difference/) | [saml-vs-oauth-vs-oidc](saml-vs-oauth-vs-oidc/) |
 | [How to Fix Python cron Jobs That Never Run](https://youtu.be/ZIym0xc1Pjs) | [page](https://cloudexplainers.com/how-to-fix-python-cron-jobs-that-never-run/) | [python-cron-jobs-fix](python-cron-jobs-fix/) |
