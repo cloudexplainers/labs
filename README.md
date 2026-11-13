@@ -4,6 +4,8 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix nginx 502 Bad Gateway Errors on Linux](https://youtu.be/6didaZWn38A) | [page](https://cloudexplainers.com/how-to-fix-nginx-502-bad-gateway-errors-on-linux/) | [nginx-502-fix](nginx-502-fix/) |
+| [How to Fix Linux apt 'Could Not Get Lock' Errors (Ubuntu)](https://youtu.be/7q3QUgTMhWo) | [page](https://cloudexplainers.com/how-to-fix-linux-apt-could-not-get-lock-errors-ubuntu/) | [apt-could-not-get-lock](apt-could-not-get-lock/) |
 | [How Email Works on the Internet (SMTP) in 10 Minutes](https://youtu.be/TdhWvaZ5Ob4) | [page](https://cloudexplainers.com/how-email-works-on-the-internet-smtp-in-10-minutes/) | [email-smtp-works](email-smtp-works/) |
 | [The Python Roadmap for Beginners](https://youtu.be/dYPUyr3fxIU) | [page](https://cloudexplainers.com/the-python-roadmap-for-beginners/) | [python-roadmap](python-roadmap/) |
 | [Golang REST API with Gin: Full Tutorial for Beginners](https://youtu.be/IbJs0sDK8Sk) | [page](https://cloudexplainers.com/golang-rest-api-with-gin-full-tutorial-for-beginners/) | [golang-gin-rest-api](golang-gin-rest-api/) |

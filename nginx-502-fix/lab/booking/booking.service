@@ -1,0 +1,13 @@
+[Unit]
+Description=Crux Climbing booking app (gunicorn)
+After=network.target
+
+[Service]
+User=ana
+Group=ana
+WorkingDirectory=/home/ana/booking
+ExecStart=/usr/bin/gunicorn --workers 2 --bind 127.0.0.1:8000 booking:app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
