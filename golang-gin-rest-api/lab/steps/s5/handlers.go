@@ -1,0 +1,35 @@
+package main
+
+import (
+	"net/http"
+	"slices"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+)
+
+func listPlants(c *gin.Context) {
+	light := c.Query("light")
+	list := []Plant{}
+	for _, p := range plants {
+		if light == "" || p.Light == light {
+			list = append(list, p)
+		}
+	}
+	slices.SortFunc(list, func(a, b Plant) int { return a.ID - b.ID })
+	c.JSON(http.StatusOK, list)
+}
+
+func getPlant(c *gin.Context) {
+	id, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "id must be a number"})
+		return
+	}
+	p, ok := plants[id]
+	if !ok {
+		c.JSON(http.StatusNotFound, gin.H{"error": "plant not found"})
+		return
+	}
+	c.JSON(http.StatusOK, p)
+}
