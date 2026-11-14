@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Linux Nginx Reverse Proxy: Full Tutorial for Beginners](https://youtu.be/xbhvLOVQHlY) | [page](https://cloudexplainers.com/linux-nginx-reverse-proxy-full-tutorial-for-beginners/) | [linux-nginx-reverse-proxy](linux-nginx-reverse-proxy/) |
 | [Every Networking Term a Beginner Needs in 12 Minutes](https://youtu.be/LHdA_MYbnpo) | [page](https://cloudexplainers.com/every-networking-term-a-beginner-needs-in-12-minutes/) | [networking-terms-every](networking-terms-every/) |
 | [How to Fix Docker 'Permission Denied' on docker.sock](https://youtu.be/MB9C3YlbBwI) | [page](https://cloudexplainers.com/how-to-fix-docker-permission-denied-on-docker-sock/) | [docker-sock-permission-denied](docker-sock-permission-denied/) |
 | [How to Fix Git 'Updates Were Rejected' When You Push](https://youtu.be/jIFuF2S49zU) | [page](https://cloudexplainers.com/how-to-fix-git-updates-were-rejected-when-you-push/) | [git-push-rejected-fix](git-push-rejected-fix/) |

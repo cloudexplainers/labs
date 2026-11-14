@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+  padding: 48px;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #f5f2eb;
+  color: #1f2428;
+}
+.card {
+  max-width: 720px;
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #d9d3c7;
+  border-radius: 12px;
+  padding: 32px;
+}
+h1 { margin: 0 0 8px; font-size: 28px; }
+p { margin: 0 0 20px; color: #525860; }
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #e7e2d8; }
+th { font-size: 13px; text-transform: uppercase; color: #6a7078; }
+.foot { margin: 20px 0 0; font-size: 14px; }
+a { color: #2b6cb0; text-decoration: none; }
