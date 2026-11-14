@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix Docker 'Permission Denied' on docker.sock](https://youtu.be/MB9C3YlbBwI) | [page](https://cloudexplainers.com/how-to-fix-docker-permission-denied-on-docker-sock/) | [docker-sock-permission-denied](docker-sock-permission-denied/) |
 | [How to Fix Git 'Updates Were Rejected' When You Push](https://youtu.be/jIFuF2S49zU) | [page](https://cloudexplainers.com/how-to-fix-git-updates-were-rejected-when-you-push/) | [git-push-rejected-fix](git-push-rejected-fix/) |
 | [How to Fix nginx 502 Bad Gateway Errors on Linux](https://youtu.be/6didaZWn38A) | [page](https://cloudexplainers.com/how-to-fix-nginx-502-bad-gateway-errors-on-linux/) | [nginx-502-fix](nginx-502-fix/) |
 | [How to Fix Linux apt 'Could Not Get Lock' Errors (Ubuntu)](https://youtu.be/7q3QUgTMhWo) | [page](https://cloudexplainers.com/how-to-fix-linux-apt-could-not-get-lock-errors-ubuntu/) | [apt-could-not-get-lock](apt-could-not-get-lock/) |
