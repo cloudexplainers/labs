@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    triggers { pollSCM('* * * * *') }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'echo "$(nproc) CPUs"'
+                sh 'python3 -m pytest -q'
+            }
+        }
+        stage('Deploy') {
+            steps { sh 'curl -fsS --connect-timeout 5 http://10.42.0.20:8000/deploy' }
+        }
+    }
+}

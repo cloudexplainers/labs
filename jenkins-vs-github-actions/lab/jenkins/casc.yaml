@@ -1,0 +1,24 @@
+jenkins:
+  systemMessage: "Ana's grooming salon CI"
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      users:
+        - id: ana
+          password: grooming-lab
+  authorizationStrategy: loggedInUsersCanDoAnything
+unclassified:
+  location:
+    url: http://jenkins:8080/
+jobs:
+  - script: >
+      pipelineJob('salon') {
+        properties { pipelineTriggers { triggers { pollSCM { scmpoll_spec('* * * * *') } } } }
+        definition {
+          cpsScm {
+            scm { git { remote { url('git://gitserver/salon.git') }; branch('*/main') } }
+            scriptPath('Jenkinsfile')
+          }
+        }
+      }

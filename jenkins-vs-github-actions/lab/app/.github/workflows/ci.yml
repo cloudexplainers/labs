@@ -1,0 +1,14 @@
+name: ci
+on: push
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: echo "$(nproc) CPUs, $(uptime -p)"
+      - run: pip install pytest
+      - run: python -m pytest -q
+      - run: curl -fsS --connect-timeout 5 http://10.42.0.20:8000/deploy
