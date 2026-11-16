@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Why One Linux Server Handles More Users Than You Think](https://youtu.be/ihjUGWSCvD4) | [page](https://cloudexplainers.com/why-one-linux-server-handles-more-users-than-you-think/) | [linux-server-users-why](linux-server-users-why/) |
 | [How to Fix Network 'Connection Refused' Errors](https://youtu.be/P7AhcDs0OYQ) | [page](https://cloudexplainers.com/how-to-fix-network-connection-refused-errors/) | [connection-refused-fix](connection-refused-fix/) |
 | [DevOps Pipelines: Jenkins vs GitHub Actions](https://youtu.be/N00jCdV7lPg) | [page](https://cloudexplainers.com/devops-pipelines-jenkins-vs-github-actions/) | [jenkins-vs-github-actions](jenkins-vs-github-actions/) |
 | [Linux Nginx Reverse Proxy: Full Tutorial for Beginners](https://youtu.be/xbhvLOVQHlY) | [page](https://cloudexplainers.com/linux-nginx-reverse-proxy-full-tutorial-for-beginners/) | [linux-nginx-reverse-proxy](linux-nginx-reverse-proxy/) |

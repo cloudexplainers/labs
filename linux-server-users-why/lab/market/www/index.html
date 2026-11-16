@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riverside Farmers Market: order ahead</title>
+<style>
+body{font-family:system-ui,sans-serif;margin:0;background:#f6f3ea;color:#2b2a26}
+header{background:#3f6b3a;color:#fff;padding:24px 32px}h1{margin:0;font-size:32px}
+main{padding:24px 32px;max-width:900px}.stall{background:#fff;border-radius:10px;padding:16px 20px;margin:12px 0}
+.stall h2{margin:0 0 6px;font-size:20px}.price{color:#3f6b3a;font-weight:600}
+</style></head>
+<body>
+<header><h1>Riverside Farmers Market</h1><p>Order ahead, pick up at your stall on Saturday morning.</p></header>
+<main>
+<section class="stall"><h2>Hill Farm</h2><p>Apples, pears, plums and carrots, picked on Friday.</p><p class="price">From 1.50</p></section>
+<section class="stall"><h2>Mill Bakery</h2><p>Sourdough and rye, baked before dawn.</p><p class="price">From 3.20</p></section>
+<section class="stall"><h2>Brook Dairy</h2><p>Cheddar, goat cheese and fresh eggs.</p><p class="price">From 2.80</p></section>
+<section class="stall"><h2>Orchard Row</h2><p>Honey, jam and cider from the orchard.</p><p class="price">From 4.00</p></section>
+<p id="orders">Your past orders appear here once you sign in.</p>
+</main>
+<script>fetch('/api/stalls').then(r => r.json()).then(s => console.log(s.length + ' products'));</script>
+</body>
+</html>

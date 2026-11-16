@@ -1,0 +1,9 @@
+[Unit]
+Description=Card payment service (stand-in, 200 ms per charge)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/payments.py
+
+[Install]
+WantedBy=multi-user.target

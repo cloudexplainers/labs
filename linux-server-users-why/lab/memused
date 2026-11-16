@@ -1,0 +1,4 @@
+#!/bin/sh
+# Memory this server is using right now, from its own cgroup counters (the 1 GB limit is the server's size).
+cur=$(cat /sys/fs/cgroup/memory.current); max=$(cat /sys/fs/cgroup/memory.max)
+echo "Memory in use: $((cur / 1048576)) MB of $((max / 1048576)) MB"
