@@ -1,0 +1,8 @@
+#!/bin/sh
+# Runs for every key in /home/git/.ssh/authorized_keys (command="gitserve <name>"): the key decides who you are.
+# No command (ssh -T): greet by name, like GitHub does. A git command: let git-shell run it.
+if [ -z "$SSH_ORIGINAL_COMMAND" ]; then
+  echo "Hi $1! You've successfully authenticated, but git-server does not provide shell access." >&2
+  exit 1
+fi
+exec git-shell -c "$SSH_ORIGINAL_COMMAND"

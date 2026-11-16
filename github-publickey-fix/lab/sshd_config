@@ -1,0 +1,5 @@
+# Keys only, like GitHub: no password or keyboard-interactive logins, so a failed login ends in
+# "Permission denied (publickey)."
+PasswordAuthentication no
+KbdInteractiveAuthentication no
+PubkeyAuthentication yes
