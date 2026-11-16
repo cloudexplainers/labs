@@ -1,0 +1,12 @@
+# A test copy of the school's database on the office PC.
+services:
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_PASSWORD: scales-and-arpeggios
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql
+volumes:
+  pgdata:
