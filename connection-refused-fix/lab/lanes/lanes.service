@@ -1,0 +1,12 @@
+[Unit]
+Description=Lane booking app
+After=network.target
+
+[Service]
+User=ana
+WorkingDirectory=/srv/lanes
+ExecStart=/usr/bin/python3 /srv/lanes/app.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
