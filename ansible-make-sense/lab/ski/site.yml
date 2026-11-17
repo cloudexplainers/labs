@@ -1,0 +1,20 @@
+- name: Web servers for the ski shop
+  hosts: web
+  become: true
+  tasks:
+    - name: nginx is installed
+      apt:
+        name: nginx
+        state: present
+        update_cache: true
+
+    - name: the shop's page is up to date
+      template:
+        src: index.html.j2
+        dest: /var/www/html/index.html
+
+    - name: nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: true

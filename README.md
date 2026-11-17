@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [DevOps with Ansible Will Finally Make Sense After This](https://youtu.be/MDl1VnVmlCc) | [page](https://cloudexplainers.com/devops-with-ansible-will-finally-make-sense-after-this/) | [ansible-make-sense](ansible-make-sense/) |
 | [How SNMP Network Monitoring Works](https://youtu.be/MAlORrScoPw) | [page](https://cloudexplainers.com/how-snmp-network-monitoring-works/) | [snmp-monitoring-works](snmp-monitoring-works/) |
 | [How to Fix GitHub 'Permission Denied (publickey)' Errors](https://youtu.be/yn27SiPDQvs) | [page](https://cloudexplainers.com/how-to-fix-github-permission-denied-publickey-errors/) | [github-publickey-fix](github-publickey-fix/) |
 | [How to Fix PostgreSQL 'Password Authentication Failed'](https://youtu.be/j_Xz07jw9yU) | [page](https://cloudexplainers.com/how-to-fix-postgresql-password-authentication-failed/) | [postgres-password-auth-fix](postgres-password-auth-fix/) |
