@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# wan-rate: Ana's small monitor. Every 5 seconds it asks the router (one SNMP GET) how many bytes have come in on
+# its internet line so far, and prints the difference as megabits per second.
+#   usage: wan-rate [samples]
+HOST=router COMMUNITY=brew-mon N=${1:-6}
+# the router's interface list says which number "wan" has
+IF=$(snmpwalk -v2c -c "$COMMUNITY" -On "$HOST" 1.3.6.1.2.1.2.2.1.2 | awk -F'[. ]' '/"?wan"?$/ { print $(NF-3) }')
+get() { snmpget -v2c -c "$COMMUNITY" -Oqv "$HOST" "1.3.6.1.2.1.31.1.1.1.6.$IF"; }   # IF-MIB::ifHCInOctets
+prev=$(get); t0=$(date +%s.%N)
+for ((i = 0; i < N; i++)); do
+  sleep 5
+  now=$(get); t=$(date +%s.%N)
+  awk -v a="$prev" -v b="$now" -v t0="$t0" -v t="$t" -v h="$(date +%T)" \
+    'BEGIN { printf "%s  internet in: %5.1f Mbit/s\n", h, (b - a) * 8 / (t - t0) / 1e6 }'
+  prev=$now; t0=$t
+done
