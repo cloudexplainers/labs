@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix PostgreSQL 'Could Not Connect to Server'](https://youtu.be/tion6mWXdOg) | [page](https://cloudexplainers.com/how-to-fix-postgresql-could-not-connect-to-server/) | [postgres-could-not-connect-fix](postgres-could-not-connect-fix/) |
 | [Claude Code Hooks Will Finally Make Sense After This](https://youtu.be/jcexJdQLDxo) | [page](https://cloudexplainers.com/claude-code-hooks-will-finally-make-sense-after-this/) | [claude-code-hooks](claude-code-hooks/) |
 | [DevOps with Ansible Will Finally Make Sense After This](https://youtu.be/MDl1VnVmlCc) | [page](https://cloudexplainers.com/devops-with-ansible-will-finally-make-sense-after-this/) | [ansible-make-sense](ansible-make-sense/) |
 | [How SNMP Network Monitoring Works](https://youtu.be/MAlORrScoPw) | [page](https://cloudexplainers.com/how-snmp-network-monitoring-works/) | [snmp-monitoring-works](snmp-monitoring-works/) |
