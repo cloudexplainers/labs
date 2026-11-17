@@ -1,0 +1,19 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:yoga-lab-only@db/postgres
+    depends_on:
+      - db
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_PASSWORD: yoga-lab-only
+    volumes:
+      - studio-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  studio-data:
