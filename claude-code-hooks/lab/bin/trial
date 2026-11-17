@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""trial N "request": the same request N times, each from the same starting files (git checkout), and for each run:
+did the tests run after Claude's last edit (by Claude, or by a hook), and do they pass at the end."""
+import os
+import subprocess
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
+from claude_run import events  # noqa: E402
+
+n, prompt = int(sys.argv[1]), sys.argv[2]
+LOG = ".claude/tests.log"
+checked = 0
+for run in range(1, n + 1):
+    subprocess.run(["git", "checkout", "-q", "--", "bookings.py", "test_bookings.py"], check=True)
+    if os.path.exists(LOG):
+        os.remove(LOG)
+    claude_ran, edited = False, set()
+    for ev in events(prompt):
+        if ev.get("type") != "assistant":
+            continue
+        for c in ev["message"]["content"]:
+            if c["type"] != "tool_use":
+                continue
+            i = c["input"]
+            if c["name"] in ("Edit", "Write"):
+                edited.add(os.path.basename(i.get("file_path", "")))
+                claude_ran = False
+            elif c["name"] == "Bash" and ("unittest" in i.get("command", "") or "pytest" in i.get("command", "")):
+                claude_ran = True
+    hook_ran = os.path.exists(LOG)
+    passing = subprocess.run(["python3", "-m", "unittest", "-q"], capture_output=True).returncode == 0
+    who = "Claude" if claude_ran else ("hook" if hook_ran else "no")
+    checked += who != "no"
+    print(f"run {run:2}  edited {len(edited)} file{'s' if len(edited) != 1 else ''}  "
+          f"tests run: {who:<6}  pass: {'yes' if passing else 'NO'}", flush=True)
+print(f"tests checked before Claude finished: {checked} of {n}")

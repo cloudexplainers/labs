@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""ask "request": one Claude Code request in this project, printed step by step:
+   -> a tool Claude asks for     x  a tool call that was refused     !  a hook's message to Claude
+Claude: what Claude says. Hooks come from this project's .claude/settings.json."""
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.realpath(__file__)))
+from claude_run import events  # noqa: E402
+
+here = os.getcwd() + "/"
+for ev in events(sys.argv[1]):
+    if ev.get("type") == "assistant":
+        for c in ev["message"]["content"]:
+            if c["type"] == "tool_use":
+                i = c["input"]
+                arg = i.get("file_path") or i.get("command") or i.get("pattern") or ""
+                if c["name"] == "Grep" and i.get("path"):
+                    arg = f"{arg} {i['path']}"
+                print(f"-> {c['name']} {str(arg).replace(here, '')}".rstrip(), flush=True)
+            elif c["type"] == "text" and c["text"].strip():
+                print("Claude: " + c["text"].strip(), flush=True)
+    elif ev.get("type") == "user":
+        for c in ev["message"].get("content", []):
+            if not isinstance(c, dict):
+                continue
+            if c.get("type") == "tool_result" and c.get("is_error"):
+                body = c.get("content")
+                if isinstance(body, list):
+                    body = " ".join(x.get("text", "") for x in body)
+                print("   x " + str(body).replace(here, "").strip().splitlines()[0], flush=True)
+            elif c.get("type") == "text" and "hook" in c.get("text", ""):
+                for n, l in enumerate(c["text"].strip().splitlines()):
+                    print(("   ! " if n == 0 else "     ") + l, flush=True)

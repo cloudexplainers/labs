@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Claude Code Hooks Will Finally Make Sense After This](https://youtu.be/jcexJdQLDxo) | [page](https://cloudexplainers.com/claude-code-hooks-will-finally-make-sense-after-this/) | [claude-code-hooks](claude-code-hooks/) |
 | [DevOps with Ansible Will Finally Make Sense After This](https://youtu.be/MDl1VnVmlCc) | [page](https://cloudexplainers.com/devops-with-ansible-will-finally-make-sense-after-this/) | [ansible-make-sense](ansible-make-sense/) |
 | [How SNMP Network Monitoring Works](https://youtu.be/MAlORrScoPw) | [page](https://cloudexplainers.com/how-snmp-network-monitoring-works/) | [snmp-monitoring-works](snmp-monitoring-works/) |
 | [How to Fix GitHub 'Permission Denied (publickey)' Errors](https://youtu.be/yn27SiPDQvs) | [page](https://cloudexplainers.com/how-to-fix-github-permission-denied-publickey-errors/) | [github-publickey-fix](github-publickey-fix/) |

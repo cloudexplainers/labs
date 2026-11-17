@@ -1,0 +1,4 @@
+hooks.log
+.claude/input/
+.claude/tests.log
+__pycache__/
