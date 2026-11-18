@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: requests
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: requests
+  template:
+    metadata:
+      labels:
+        app: requests
+    spec:
+      containers:
+      - name: board
+        image: requests:2.0
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: station
+        resources:
+          requests:
+            memory: 64Gi
+            cpu: 100m

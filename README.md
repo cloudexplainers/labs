@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Kubernetes: Full Tutorial for Beginners](https://youtu.be/35H-yXgSf0A) | [page](https://cloudexplainers.com/kubernetes-full-tutorial-for-beginners/) | [kubernetes-tutorial](kubernetes-tutorial/) |
 | [How TCP Sockets Work](https://youtu.be/u1SjuVKn2gY) | [page](https://cloudexplainers.com/how-tcp-sockets-work/) | [tcp-sockets-works](tcp-sockets-works/) |
 | [How to Fix PostgreSQL 'Could Not Connect to Server'](https://youtu.be/tion6mWXdOg) | [page](https://cloudexplainers.com/how-to-fix-postgresql-could-not-connect-to-server/) | [postgres-could-not-connect-fix](postgres-could-not-connect-fix/) |
 | [Claude Code Hooks Will Finally Make Sense After This](https://youtu.be/jcexJdQLDxo) | [page](https://cloudexplainers.com/claude-code-hooks-will-finally-make-sense-after-this/) | [claude-code-hooks](claude-code-hooks/) |
