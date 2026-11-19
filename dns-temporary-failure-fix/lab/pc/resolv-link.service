@@ -1,0 +1,13 @@
+[Unit]
+Description=Give /etc/resolv.conf back to systemd-resolved, as on an installed Ubuntu (lab only)
+DefaultDependencies=no
+Before=systemd-resolved.service
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'umount /etc/resolv.conf 2>/dev/null; ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf; umount /etc/hosts 2>/dev/null; printf "127.0.0.1 localhost\\n127.0.1.1 courier-pc\\n" > /etc/hosts'
+RemainAfterExit=yes
+
+[Install]
+WantedBy=sysinit.target

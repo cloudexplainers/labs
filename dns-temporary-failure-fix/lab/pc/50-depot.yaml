@@ -1,0 +1,12 @@
+# The dispatch server's network: a fixed address on the depot's network, the router as the way out and as DNS.
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      addresses: [192.168.73.10/24]
+      routes:
+        - to: default
+          via: 192.168.73.254
+      nameservers:
+        addresses: [192.168.73.1]

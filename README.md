@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix DNS 'Temporary Failure in Name Resolution' on Linux](https://youtu.be/_i9eT5e7uxA) | [page](https://cloudexplainers.com/how-to-fix-dns-temporary-failure-in-name-resolution-on-linux/) | [dns-temporary-failure-fix](dns-temporary-failure-fix/) |
 | [How to Fix AWS CLI 'Unable to Locate Credentials'](https://youtu.be/GUt_DcLb010) | [page](https://cloudexplainers.com/how-to-fix-aws-cli-unable-to-locate-credentials/) | [aws-cli-credentials-fix](aws-cli-credentials-fix/) |
 | [Proxmox vs ESXi for Your Homelab: When Each One Wins](https://youtu.be/GOLaQcEzW30) | [page](https://cloudexplainers.com/proxmox-vs-esxi-for-your-homelab-when-each-one-wins/) | [proxmox-vs-esxi](proxmox-vs-esxi/) |
 | [PostgreSQL UUID vs Auto Increment: Which Primary Key Should You Use?](https://youtu.be/tewqLmPmyR4) | [page](https://cloudexplainers.com/postgresql-uuid-vs-auto-increment-which-primary-key-should-you-use/) | [postgres-uuid-vs-auto-increment](postgres-uuid-vs-auto-increment/) |
