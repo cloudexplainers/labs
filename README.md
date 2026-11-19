@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [PostgreSQL UUID vs Auto Increment: Which Primary Key Should You Use?](https://youtu.be/tewqLmPmyR4) | [page](https://cloudexplainers.com/postgresql-uuid-vs-auto-increment-which-primary-key-should-you-use/) | [postgres-uuid-vs-auto-increment](postgres-uuid-vs-auto-increment/) |
 | [Kubernetes: Full Tutorial for Beginners](https://youtu.be/35H-yXgSf0A) | [page](https://cloudexplainers.com/kubernetes-full-tutorial-for-beginners/) | [kubernetes-tutorial](kubernetes-tutorial/) |
 | [How TCP Sockets Work](https://youtu.be/u1SjuVKn2gY) | [page](https://cloudexplainers.com/how-tcp-sockets-work/) | [tcp-sockets-works](tcp-sockets-works/) |
 | [How to Fix PostgreSQL 'Could Not Connect to Server'](https://youtu.be/tion6mWXdOg) | [page](https://cloudexplainers.com/how-to-fix-postgresql-could-not-connect-to-server/) | [postgres-could-not-connect-fix](postgres-could-not-connect-fix/) |
