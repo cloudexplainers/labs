@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: menu
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: menu
+  template:
+    metadata:
+      labels:
+        app: menu
+    spec:
+      imagePullSecrets:
+      - name: taco-registry
+      containers:
+      - name: menu
+        image: registry.taco.lan/menu:2.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
