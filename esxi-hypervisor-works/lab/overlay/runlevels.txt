@@ -1,0 +1,4 @@
+boot: bootmisc hostname hwclock modules sysctl syslog 
+default: local 
+shutdown: killprocs mount-ro savecache 
+sysinit: devfs dmesg hwdrivers mdev modloop 
