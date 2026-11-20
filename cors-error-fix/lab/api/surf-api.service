@@ -1,0 +1,12 @@
+[Unit]
+Description=Driftwood Surf School lessons API
+After=network.target
+
+[Service]
+User=www-data
+WorkingDirectory=/srv/surf-api
+ExecStart=/usr/bin/gunicorn --workers 2 --bind 127.0.0.1:5000 surf_api:app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
