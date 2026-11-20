@@ -1,0 +1,12 @@
+[Unit]
+Description=City marathon sign-up app
+After=network.target
+
+[Service]
+User=signup
+WorkingDirectory=/opt/signup
+ExecStart=/usr/bin/gunicorn --workers 1 --threads 4 --bind 0.0.0.0:8080 --access-logfile - --access-logformat '%%(h)s xff=%%({x-forwarded-for}i)s "%%(r)s" %%(s)s' signup:app
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
