@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How Python Virtual Environments Work](https://youtu.be/NYGBE6k_5iI) | [page](https://cloudexplainers.com/how-python-virtual-environments-work/) | [python-venv-works](python-venv-works/) |
 | [How to Fix Cloudflare Tunnel Errors in a Homelab](https://youtu.be/gg3jIZ_6xQ0) | [page](https://cloudexplainers.com/how-to-fix-cloudflare-tunnel-errors-in-a-homelab/) | [cloudflare-tunnel-errors-fix](cloudflare-tunnel-errors-fix/) |
 | [How to Fix API CORS Errors: No 'Access-Control-Allow-Origin'](https://youtu.be/Y5AJnHVZY6E) | [page](https://cloudexplainers.com/how-to-fix-api-cors-errors-no-access-control-allow-origin/) | [cors-error-fix](cors-error-fix/) |
 | [How Authenticator App Login Codes Work (TOTP)](https://youtu.be/xo93ciOl-Pc) | [page](https://cloudexplainers.com/how-authenticator-app-login-codes-work-totp/) | [totp-authenticator-works](totp-authenticator-works/) |
