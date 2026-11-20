@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Git and GitHub: Full Tutorial for Beginners](https://youtu.be/cLcb6yuZW2Y) | [page](https://cloudexplainers.com/git-and-github-full-tutorial-for-beginners/) | [git-github-tutorial](git-github-tutorial/) |
 | [How a Homelab Hypervisor Works (VMware ESXi)](https://youtu.be/FGtNB4wrSjw) | [page](https://cloudexplainers.com/how-a-homelab-hypervisor-works-vmware-esxi/) | [esxi-hypervisor-works](esxi-hypervisor-works/) |
 | [How to Fix Kubernetes ImagePullBackOff Errors](https://youtu.be/4cKTI4UaXeM) | [page](https://cloudexplainers.com/how-to-fix-kubernetes-imagepullbackoff-errors/) | [kubernetes-imagepullbackoff-fix](kubernetes-imagepullbackoff-fix/) |
 | [How to Fix DNS 'Temporary Failure in Name Resolution' on Linux](https://youtu.be/_i9eT5e7uxA) | [page](https://cloudexplainers.com/how-to-fix-dns-temporary-failure-in-name-resolution-on-linux/) | [dns-temporary-failure-fix](dns-temporary-failure-fix/) |
