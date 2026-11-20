@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+"""Works out a TOTP code step by step, the way RFC 6238 says (HMAC-SHA1, 30-second steps, 6 digits).
+Usage: totp-steps <user>   (reads that user's secret from the shop's user file)"""
+import base64
+import json
+import hashlib
+import hmac
+import struct
+import sys
+import time
+
+secret = json.load(open("/var/lib/diveshop/users.json"))[sys.argv[1]]["totp_secret"]
+key = base64.b32decode(secret)
+now = int(time.time())
+step = now // 30
+mac = hmac.new(key, struct.pack(">Q", step), hashlib.sha1).digest()
+off = mac[-1] & 0x0F
+four = mac[off:off + 4]
+num = struct.unpack(">I", four)[0] & 0x7FFFFFFF
+print(f"1. secret:      {len(key)} bytes from the key")
+print(f"2. time now:    {now} seconds since 1970")
+print(f"3. time step:   {now} / 30 = {step}")
+print(f"4. HMAC-SHA1:   {mac.hex(' ')}")
+print(f"5. last digit:  {mac.hex()[-1]}, so start at byte {off}")
+raw = struct.unpack(">I", four)[0]
+print(f"6. four bytes:  {four.hex(' ')} = {num:,}" + (" (first bit dropped)" if raw != num else ""))
+print(f"7. last six:    {num % 1_000_000:06d}")

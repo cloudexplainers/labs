@@ -1,0 +1,19 @@
+#!/bin/bash
+# Stands in for Ana's authenticator app: it keeps the otpauth:// links it scanned and shows each account's code.
+#   authenticator scan <picture>   read a QR code (zbarimg) and keep its link
+#   authenticator                  show every account's current code (oathtool) and how long it lasts
+store=~/.authenticator
+if [ "$1" = scan ]; then
+  uri=$(zbarimg -q --raw "$2") || { echo "no QR code in $2"; exit 1; }
+  mkdir -p "$store" && echo "$uri" >> "$store/accounts"
+  label=$(printf '%s' "$uri" | sed -E 's#^otpauth://totp/([^?]*).*#\1#; s/%20/ /g; s/%3A/:/g; s/^([^:]*):(.*)$/\1 (\2)/')
+  echo "Added: $label"
+  exit
+fi
+now=$(date +%s)
+while read -r uri; do
+  secret=$(printf '%s' "$uri" | sed -E 's/.*[?&]secret=([A-Z2-7]+).*/\1/')
+  label=$(printf '%s' "$uri" | sed -E 's#^otpauth://totp/([^?]*).*#\1#; s/%20/ /g; s/%3A/:/g; s/^([^:]*):(.*)$/\1 (\2)/')
+  code=$(oathtool --totp -b "$secret")
+  printf '%s  %s  %s %s  (%d s left)\n' "$(date +%T)" "$label" "${code:0:3}" "${code:3}" $((30 - now % 30))
+done < "$store/accounts"

@@ -1,0 +1,14 @@
+[Unit]
+Description=Dive shop booking site (login with an authenticator code)
+After=network.target
+
+[Service]
+User=diveshop
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 -m flask --app /opt/diveshop/diveshop.py run --host 0.0.0.0 --port 80
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+StateDirectory=diveshop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

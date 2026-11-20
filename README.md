@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How Authenticator App Login Codes Work (TOTP)](https://youtu.be/xo93ciOl-Pc) | [page](https://cloudexplainers.com/how-authenticator-app-login-codes-work-totp/) | [totp-authenticator-works](totp-authenticator-works/) |
 | [Git and GitHub: Full Tutorial for Beginners](https://youtu.be/cLcb6yuZW2Y) | [page](https://cloudexplainers.com/git-and-github-full-tutorial-for-beginners/) | [git-github-tutorial](git-github-tutorial/) |
 | [How a Homelab Hypervisor Works (VMware ESXi)](https://youtu.be/FGtNB4wrSjw) | [page](https://cloudexplainers.com/how-a-homelab-hypervisor-works-vmware-esxi/) | [esxi-hypervisor-works](esxi-hypervisor-works/) |
 | [How to Fix Kubernetes ImagePullBackOff Errors](https://youtu.be/4cKTI4UaXeM) | [page](https://cloudexplainers.com/how-to-fix-kubernetes-imagepullbackoff-errors/) | [kubernetes-imagepullbackoff-fix](kubernetes-imagepullbackoff-fix/) |
