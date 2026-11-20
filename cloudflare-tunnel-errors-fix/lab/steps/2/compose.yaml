@@ -1,0 +1,12 @@
+services:
+  site:
+    image: python:3.12-alpine
+    command: python -m http.server 8080 --directory /site
+    volumes:
+      - ./site:/site:ro
+    ports:
+      - "8080:8080"
+
+  tunnel:
+    image: cloudflare/cloudflared:2026.11.1
+    command: tunnel --no-autoupdate --url http://site:8080
