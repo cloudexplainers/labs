@@ -1,0 +1,12 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: import
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: import
+        image: lanes:1.1
+        command: ["python", "import.py"]

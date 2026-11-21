@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lanes
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lanes
+  template:
+    metadata:
+      labels:
+        app: lanes
+    spec:
+      containers:
+      - name: lanes
+        image: lanes:1.1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: BOOKING_KEY
+          valueFrom:
+            secretKeyRef:
+              name: booking
+              key: key
+        resources:
+          limits:
+            memory: 256Mi
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          periodSeconds: 5

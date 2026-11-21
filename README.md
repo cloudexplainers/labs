@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix a Kubernetes Pod Stuck in CrashLoopBackOff](https://youtu.be/20_hVb-TfCU) | [page](https://cloudexplainers.com/how-to-fix-a-kubernetes-pod-stuck-in-crashloopbackoff/) | [kubernetes-crashloopbackoff-fix](kubernetes-crashloopbackoff-fix/) |
 | [How to Fix a Homelab ESXi Host Not Responding](https://youtu.be/KvJwz6TSKJs) | [page](https://cloudexplainers.com/how-to-fix-a-homelab-esxi-host-not-responding/) | [esxi-host-not-responding](esxi-host-not-responding/) |
 | [PostgreSQL: Full Tutorial for Beginners](https://youtu.be/B93DpU3vWNY) | [page](https://cloudexplainers.com/postgresql-full-tutorial-for-beginners/) | [postgresql-tutorial](postgresql-tutorial/) |
 | [How a Load Balancer Works with HAProxy](https://youtu.be/kkGClEISoB0) | [page](https://cloudexplainers.com/how-a-load-balancer-works-with-haproxy/) | [haproxy-load-balancer-works](haproxy-load-balancer-works/) |
