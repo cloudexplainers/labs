@@ -1,0 +1,9 @@
+stock,year,make,model,body,color,miles,price,status
+A12,2017,Honda,Fit,hatchback,blue,61200,8400,for sale
+B07,2016,Ford,Focus,hatchback,red,74800,7900,for sale
+C03,2019,Toyota,Corolla,sedan,blue,48100,12900,for sale
+D21,2015,Mazda,3,hatchback,blue,89500,8900,for sale
+E15,2018,Hyundai,Tucson,suv,silver,66300,14500,for sale
+F09,2014,Chevrolet,Sonic,hatchback,blue,102400,6200,sold
+G04,2020,Kia,Soul,hatchback,white,39800,13900,for sale
+H11,2016,Subaru,Outback,wagon,green,97100,10500,for sale

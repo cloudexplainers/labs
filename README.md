@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [MCP Servers: Full Tutorial for Beginners](https://youtu.be/GLjcyl-hN6Q) | [page](https://cloudexplainers.com/mcp-servers-full-tutorial-for-beginners/) | [mcp-server-tutorial](mcp-server-tutorial/) |
 | [Golang Error Return Values in 5 Minutes](https://youtu.be/Kx4cRajsd1k) | [page](https://cloudexplainers.com/golang-error-return-values-in-5-minutes/) | [golang-error-returns](golang-error-returns/) |
 | [How to Fix Python ModuleNotFoundError: No Module Named](https://youtu.be/VMrnxTFClYM) | [page](https://cloudexplainers.com/how-to-fix-python-modulenotfounderror-no-module-named/) | [python-modulenotfounderror-fix](python-modulenotfounderror-fix/) |
 | [Golang Pointers in 5 Minutes](https://youtu.be/x6B3_1FLjiw) | [page](https://cloudexplainers.com/golang-pointers-in-5-minutes/) | [golang-pointers](golang-pointers/) |
