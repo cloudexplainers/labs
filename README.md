@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Golang if err != nil Checks in 5 Minutes](https://youtu.be/91PZUTWD0Pg) | [page](https://cloudexplainers.com/golang-if-err-nil-checks-in-5-minutes/) | [golang-if-err-nil](golang-if-err-nil/) |
 | [How to Fix Golang 'go.mod File Not Found' Errors](https://youtu.be/NQ7Xs6oYEQ4) | [page](https://cloudexplainers.com/how-to-fix-golang-go-mod-file-not-found-errors/) | [golang-gomod-not-found](golang-gomod-not-found/) |
 | [MCP Servers: Full Tutorial for Beginners](https://youtu.be/GLjcyl-hN6Q) | [page](https://cloudexplainers.com/mcp-servers-full-tutorial-for-beginners/) | [mcp-server-tutorial](mcp-server-tutorial/) |
 | [Golang Error Return Values in 5 Minutes](https://youtu.be/Kx4cRajsd1k) | [page](https://cloudexplainers.com/golang-error-return-values-in-5-minutes/) | [golang-error-returns](golang-error-returns/) |
