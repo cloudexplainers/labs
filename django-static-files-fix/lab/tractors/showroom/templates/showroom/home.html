@@ -1,0 +1,18 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Hillside Tractors</title>
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">
+</head>
+<body>
+  <header id="top"><img id="logo" src="{% static 'img/logo.svg' %}" alt="Hillside Tractors logo"><h1 id="title">Hillside Tractors</h1>
+    <p id="sub">New and used tractors, parts and service. Open Monday to Saturday.</p></header>
+  <main id="grid">
+  {% for t in tractors %}
+    <article class="card" id="card{{ forloop.counter }}"><img src="{% static t.img %}" alt="{{ t.name }}">
+      <h2>{{ t.name }}</h2><p>{{ t.hp }} hp</p><p class="price">{{ t.price }}</p><a class="btn" href="#">Book a test drive</a></article>
+  {% endfor %}
+  </main>
+</body>
+</html>

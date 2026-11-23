@@ -1,0 +1,11 @@
+name: ce-p125-testdb
+services:
+  db:
+    image: mysql:8.4
+    environment:
+      MYSQL_ROOT_PASSWORD: first-test-pw
+      MYSQL_DATABASE: dispatch
+    volumes:
+      - data:/var/lib/mysql
+volumes:
+  data:

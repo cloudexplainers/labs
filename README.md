@@ -4,6 +4,10 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix MySQL Database Error 1045: Access Denied for User](https://youtu.be/NYvhaO5f3F8) | [page](https://cloudexplainers.com/how-to-fix-mysql-database-error-1045-access-denied-for-user/) | [mysql-error-1045-access-denied](mysql-error-1045-access-denied/) |
+| [Golang Method Receivers in 5 Minutes](https://youtu.be/o3n6m7B-JNo) | [page](https://cloudexplainers.com/golang-method-receivers-in-5-minutes/) | [golang-method-receivers](golang-method-receivers/) |
+| [How to Fix Python SSL: CERTIFICATE_VERIFY_FAILED Errors](https://youtu.be/hvSvBkMJoAc) | [page](https://cloudexplainers.com/how-to-fix-python-ssl-certificate-verify-failed-errors/) | [python-ssl-certificate-verify-failed](python-ssl-certificate-verify-failed/) |
+| [How to Fix Django Static Files Not Loading in Production](https://youtu.be/DjJ2PcMT1Po) | [page](https://cloudexplainers.com/how-to-fix-django-static-files-not-loading-in-production/) | [django-static-files-fix](django-static-files-fix/) |
 | [OpenRouter vs Direct API Keys: Which One Should You Use?](https://youtu.be/axQNrOg8eAs) | [page](https://cloudexplainers.com/openrouter-vs-direct-api-keys-which-one-should-you-use/) | [openrouter-vs-direct-keys](openrouter-vs-direct-keys/) |
 | [Golang if err != nil Checks in 5 Minutes](https://youtu.be/91PZUTWD0Pg) | [page](https://cloudexplainers.com/golang-if-err-nil-checks-in-5-minutes/) | [golang-if-err-nil](golang-if-err-nil/) |
 | [How to Fix Golang 'go.mod File Not Found' Errors](https://youtu.be/NQ7Xs6oYEQ4) | [page](https://cloudexplainers.com/how-to-fix-golang-go-mod-file-not-found-errors/) | [golang-gomod-not-found](golang-gomod-not-found/) |
