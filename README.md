@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Golang Structs in 5 Minutes](https://youtu.be/LEbAMoq3n0I) | [page](https://cloudexplainers.com/golang-structs-in-5-minutes/) | [golang-structs](golang-structs/) |
 | [Redis: Full Tutorial for Beginners](https://youtu.be/2IlDbfPYmIM) | [page](https://cloudexplainers.com/redis-full-tutorial-for-beginners/) | [redis-tutorial](redis-tutorial/) |
 | [Golang context.Context in 5 Minutes](https://youtu.be/omLFM3VDPPg) | [page](https://cloudexplainers.com/golang-context-context-in-5-minutes/) | [golang-context](golang-context/) |
 | [How to Fix MySQL Database Error 1045: Access Denied for User](https://youtu.be/NYvhaO5f3F8) | [page](https://cloudexplainers.com/how-to-fix-mysql-database-error-1045-access-denied-for-user/) | [mysql-error-1045-access-denied](mysql-error-1045-access-denied/) |
