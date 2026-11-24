@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Golang for range Loops in 5 Minutes](https://youtu.be/qJajUCGAYp8) | [page](https://cloudexplainers.com/golang-for-range-loops-in-5-minutes/) | [golang-for-range](golang-for-range/) |
 | [SQL Databases: SQLite vs PostgreSQL](https://youtu.be/HP8IEjLjQ1g) | [page](https://cloudexplainers.com/sql-databases-sqlite-vs-postgresql/) | [sqlite-vs-postgresql](sqlite-vs-postgresql/) |
 | [The Django Roadmap for Beginners](https://youtu.be/acqMOtbTj-o) | [page](https://cloudexplainers.com/the-django-roadmap-for-beginners/) | [django-roadmap](django-roadmap/) |
 | [Golang Structs in 5 Minutes](https://youtu.be/LEbAMoq3n0I) | [page](https://cloudexplainers.com/golang-structs-in-5-minutes/) | [golang-structs](golang-structs/) |
