@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [The Django Roadmap for Beginners](https://youtu.be/acqMOtbTj-o) | [page](https://cloudexplainers.com/the-django-roadmap-for-beginners/) | [django-roadmap](django-roadmap/) |
 | [Golang Structs in 5 Minutes](https://youtu.be/LEbAMoq3n0I) | [page](https://cloudexplainers.com/golang-structs-in-5-minutes/) | [golang-structs](golang-structs/) |
 | [Redis: Full Tutorial for Beginners](https://youtu.be/2IlDbfPYmIM) | [page](https://cloudexplainers.com/redis-full-tutorial-for-beginners/) | [redis-tutorial](redis-tutorial/) |
 | [Golang context.Context in 5 Minutes](https://youtu.be/omLFM3VDPPg) | [page](https://cloudexplainers.com/golang-context-context-in-5-minutes/) | [golang-context](golang-context/) |

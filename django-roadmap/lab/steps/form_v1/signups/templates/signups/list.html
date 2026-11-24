@@ -1,0 +1,11 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'signups/style.css' %}">
+<h1>Potluck sign-ups</h1>
+<ul>
+{% for dish in dishes %}
+  <li>{{ dish.name }} ({{ dish.kind }}), brought by {{ dish.person }}</li>
+{% empty %}
+  <li>No dishes yet</li>
+{% endfor %}
+</ul>
+<a href="/signups/new/">Bring a dish</a>
