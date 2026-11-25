@@ -1,0 +1,10 @@
+{% extends "jobs/base.html" %}
+{% block title %}My tasks{% endblock %}
+{% block content %}
+<h1>{{ user.username|capfirst }}'s tasks ({{ tasks|length }})</h1>
+<ul>
+{% for task in tasks %}
+  <li>{{ task.job }}: {{ task.room }}, {{ task.title }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

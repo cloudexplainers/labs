@@ -1,0 +1,17 @@
+{% extends "jobs/base.html" %}
+{% block title %}{{ job.address }}{% endblock %}
+{% block content %}
+<h1>{{ job.address }}</h1>
+<p>Client: {{ job.client }}</p>
+<ul>
+{% for task in job.tasks.all %}
+  <li>{{ task.room }}: {{ task.title }}{% if task.done %} (done){% endif %}</li>
+{% endfor %}
+</ul>
+<h2>Add a task</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Add task</button>
+</form>
+{% endblock %}

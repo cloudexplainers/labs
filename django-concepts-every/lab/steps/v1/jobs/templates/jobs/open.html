@@ -1,0 +1,10 @@
+{% extends "jobs/base.html" %}
+{% block title %}Open tasks{% endblock %}
+{% block content %}
+<h1>Open tasks ({{ tasks|length }})</h1>
+<ol>
+{% for task in tasks %}
+  <li>{{ task.job.address }}: {{ task.room }}, {{ task.title }}</li>
+{% endfor %}
+</ol>
+{% endblock %}
