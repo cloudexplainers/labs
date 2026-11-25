@@ -1,0 +1,4 @@
+Runway bookings, today
+09:30  Cessna 172   G-KARI  runway 27
+10:15  Piper Cub    N-TOM1  runway 27
+11:00  Robin DR400  F-GLID  runway 09
