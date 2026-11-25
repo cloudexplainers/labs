@@ -1,0 +1,9 @@
+[Unit]
+Description=Weighbridge readings
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/weights.py
+
+[Install]
+WantedBy=multi-user.target

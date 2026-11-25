@@ -4,6 +4,8 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix Linux 'Too Many Open Files' Errors](https://youtu.be/dO2yy0j0a9s) | [page](https://cloudexplainers.com/how-to-fix-linux-too-many-open-files-errors/) | [linux-too-many-open-files](linux-too-many-open-files/) |
+| [How to Fix Network 'No Route to Host' Errors on Linux](https://youtu.be/r28RihiAa4Q) | [page](https://cloudexplainers.com/how-to-fix-network-no-route-to-host-errors-on-linux/) | [network-no-route-to-host](network-no-route-to-host/) |
 | [Every Django Concept a Beginner Needs to Know](https://youtu.be/Go_7URlZlDk) | [page](https://cloudexplainers.com/every-django-concept-a-beginner-needs-to-know/) | [django-concepts-every](django-concepts-every/) |
 | [SSH on Linux: Full Tutorial for Beginners](https://youtu.be/-ERKMa89EFU) | [page](https://cloudexplainers.com/ssh-on-linux-full-tutorial-for-beginners/) | [ssh-tutorial](ssh-tutorial/) |
 | [Golang for range Loops in 5 Minutes](https://youtu.be/qJajUCGAYp8) | [page](https://cloudexplainers.com/golang-for-range-loops-in-5-minutes/) | [golang-for-range](golang-for-range/) |

@@ -1,0 +1,11 @@
+[Unit]
+Description=Laundromat card payments
+After=network.target
+
+[Service]
+User=washpay
+ExecStart=/usr/bin/python3 /srv/washpay/washpay.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
