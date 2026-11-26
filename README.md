@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Linux Firewall with ufw: Full Tutorial for Beginners](https://youtu.be/e8ycU4HXtFs) | [page](https://cloudexplainers.com/linux-firewall-with-ufw-full-tutorial-for-beginners/) | [ufw-firewall-tutorial](ufw-firewall-tutorial/) |
 | [Golang defer Statements in 5 Minutes](https://youtu.be/S1FbDDUb3Yg) | [page](https://cloudexplainers.com/golang-defer-statements-in-5-minutes/) | [golang-defer](golang-defer/) |
 | [How to Fix OAuth 'invalid_grant' Errors](https://youtu.be/gMIN9AkkcIQ) | [page](https://cloudexplainers.com/how-to-fix-oauth-invalid-grant-errors/) | [oauth-invalid-grant](oauth-invalid-grant/) |
 | [The SQL Roadmap for Beginners](https://youtu.be/sjTBLMRD-cY) | [page](https://cloudexplainers.com/the-sql-roadmap-for-beginners/) | [sql-roadmap](sql-roadmap/) |

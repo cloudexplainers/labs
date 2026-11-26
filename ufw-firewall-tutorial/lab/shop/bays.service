@@ -1,0 +1,11 @@
+[Unit]
+Description=Bay screens page
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/shop/bays.py
+User=www-data
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
