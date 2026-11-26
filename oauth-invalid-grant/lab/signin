@@ -1,0 +1,34 @@
+#!/usr/bin/env python3
+"""Does what Jen's browser does when she taps "Sign in" in the shuttle app: opens Shuttle ID's sign-in page with a
+fresh state and PKCE challenge, posts her name and password, and reads the code from the address Shuttle ID sends
+her back to (https://shuttle.test/callback?...). Saves the code and the PKCE verifier in ~/flow, like the app's
+session would. The rider's password is read from ~/.rider-password (lab only)."""
+import base64, hashlib, html, os, re, secrets, sys, time
+from pathlib import Path
+from urllib.parse import urlencode, urlparse, parse_qs
+import requests
+
+ID = "https://id.shuttle.test/realms/shuttle/protocol/openid-connect"
+REDIRECT = os.environ.get("REDIRECT_URI", "https://shuttle.test/callback")
+flow = Path.home() / "flow"
+flow.mkdir(exist_ok=True)
+verifier = secrets.token_urlsafe(48)
+challenge = base64.urlsafe_b64encode(hashlib.sha256(verifier.encode()).digest()).rstrip(b"=").decode()
+s = requests.Session()
+page = s.get(f"{ID}/auth?" + urlencode({"client_id": "shuttle-app", "response_type": "code", "scope": "openid",
+                                         "redirect_uri": REDIRECT, "state": secrets.token_urlsafe(12),
+                                         "code_challenge": challenge, "code_challenge_method": "S256"}))
+form = re.search(r'id="kc-form-login"[^>]*action="([^"]+)"', page.text)
+if not form:
+    sys.exit(f"no sign-in page: {page.status_code}")
+r = s.post(html.unescape(form.group(1)), data={"username": "jen",
+           "password": (Path.home() / ".rider-password").read_text().strip()}, allow_redirects=False)
+back = r.headers.get("Location", "")
+code = parse_qs(urlparse(back).query).get("code", [""])[0]
+if not code:
+    sys.exit(f"sign-in failed: {r.status_code}")
+(flow / "code").write_text(code)
+(flow / "verifier").write_text(verifier)
+(flow / "issued").write_text(str(time.time()))
+print(f"Jen signed in. Sent back to {urlparse(back).scheme}://{urlparse(back).netloc}{urlparse(back).path}")
+print(f"code: {code[:12]}... (saved in ~/flow/code)")

@@ -1,0 +1,75 @@
+{
+ "realm": "shuttle",
+ "enabled": true,
+ "displayName": "Shuttle ID",
+ "sslRequired": "all",
+ "accessTokenLifespan": 300,
+ "accessCodeLifespan": 60,
+ "ssoSessionIdleTimeout": 1800,
+ "ssoSessionMaxLifespan": 36000,
+ "revokeRefreshToken": true,
+ "refreshTokenMaxReuse": 0,
+ "users": [
+  {
+   "username": "jen",
+   "enabled": true,
+   "email": "jen@shuttle.test",
+   "emailVerified": true,
+   "firstName": "Jen",
+   "lastName": "Park",
+   "credentials": [
+    {
+     "type": "password",
+     "value": "lab-only-rider-pw",
+     "temporary": false
+    }
+   ]
+  }
+ ],
+ "clients": [
+  {
+   "clientId": "shuttle-app",
+   "name": "Airport Shuttle",
+   "enabled": true,
+   "protocol": "openid-connect",
+   "publicClient": false,
+   "clientAuthenticatorType": "client-secret",
+   "secret": "lab-only-shuttle-secret",
+   "redirectUris": [
+    "https://shuttle.test/callback"
+   ],
+   "webOrigins": [
+    "https://shuttle.test"
+   ],
+   "standardFlowEnabled": true,
+   "implicitFlowEnabled": false,
+   "directAccessGrantsEnabled": false,
+   "consentRequired": false,
+   "attributes": {
+    "pkce.code.challenge.method": "S256"
+   }
+  },
+  {
+   "clientId": "dispatch-desk",
+   "name": "Dispatch Desk",
+   "enabled": true,
+   "protocol": "openid-connect",
+   "publicClient": false,
+   "clientAuthenticatorType": "client-secret",
+   "secret": "lab-only-desk-secret",
+   "redirectUris": [
+    "https://desk.shuttle.test/callback"
+   ],
+   "webOrigins": [
+    "https://desk.shuttle.test"
+   ],
+   "standardFlowEnabled": true,
+   "implicitFlowEnabled": false,
+   "directAccessGrantsEnabled": false,
+   "consentRequired": false,
+   "attributes": {
+    "pkce.code.challenge.method": "S256"
+   }
+  }
+ ]
+}

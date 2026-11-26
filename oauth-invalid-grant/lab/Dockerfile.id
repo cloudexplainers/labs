@@ -1,0 +1,4 @@
+# Shuttle ID: the lab's sign-in service (playing the part of a Google or Microsoft account): stock Keycloak with one
+# realm, one rider (Jen) and one app (John's airport shuttle booking app, with PKCE required).
+FROM quay.io/keycloak/keycloak:26.8.2
+COPY shuttle-realm.json /opt/keycloak/data/import/shuttle-realm.json

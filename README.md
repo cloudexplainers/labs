@@ -4,7 +4,9 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix OAuth 'invalid_grant' Errors](https://youtu.be/gMIN9AkkcIQ) | [page](https://cloudexplainers.com/how-to-fix-oauth-invalid-grant-errors/) | [oauth-invalid-grant](oauth-invalid-grant/) |
 | [The SQL Roadmap for Beginners](https://youtu.be/sjTBLMRD-cY) | [page](https://cloudexplainers.com/the-sql-roadmap-for-beginners/) | [sql-roadmap](sql-roadmap/) |
+| [Golang make() for Slices and Maps in 5 Minutes](https://youtu.be/sDCikn_06uI) | [page](https://cloudexplainers.com/golang-make-for-slices-and-maps-in-5-minutes/) | [golang-make-slices-maps](golang-make-slices-maps/) |
 | [How to Fix Linux 'Too Many Open Files' Errors](https://youtu.be/dO2yy0j0a9s) | [page](https://cloudexplainers.com/how-to-fix-linux-too-many-open-files-errors/) | [linux-too-many-open-files](linux-too-many-open-files/) |
 | [How to Fix Network 'No Route to Host' Errors on Linux](https://youtu.be/r28RihiAa4Q) | [page](https://cloudexplainers.com/how-to-fix-network-no-route-to-host-errors-on-linux/) | [network-no-route-to-host](network-no-route-to-host/) |
 | [Every Django Concept a Beginner Needs to Know](https://youtu.be/Go_7URlZlDk) | [page](https://cloudexplainers.com/every-django-concept-a-beginner-needs-to-know/) | [django-concepts-every](django-concepts-every/) |

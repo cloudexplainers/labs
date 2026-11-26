@@ -1,0 +1,13 @@
+# John's app server for the airport shuttle's booking app: a stock Ubuntu 24.04 with Ubuntu's python3-requests, curl
+# and jq. Two small helper scripts stand in for the two halves of a sign-in: `signin` does what Jen's browser does
+# (opens the sign-in page, posts her name and password, and keeps the code from the address it is sent back to),
+# `exchange` and `refresh` send the same token requests John's app sends.
+FROM ubuntu:24.04
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates python3 python3-requests curl jq \
+ && rm -rf /var/lib/apt/lists/* \
+ && userdel -r ubuntu \
+ && useradd -m -s /bin/bash john \
+ && touch /home/john/.hushlogin
+COPY signin exchange refresh signout /usr/local/bin/
+CMD ["sleep", "infinity"]

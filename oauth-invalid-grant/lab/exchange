@@ -1,0 +1,25 @@
+#!/usr/bin/env python3
+"""The token request John's app sends after a sign-in: trade the code for tokens. Uses ~/flow/code and
+~/flow/verifier unless CODE, VERIFIER, REDIRECT_URI or CLIENT are set; the app's secret is in ~/.shuttle-secret."""
+import json, os, sys
+from pathlib import Path
+import requests
+
+flow = Path.home() / "flow"
+form = {"grant_type": "authorization_code",
+        "code": os.environ.get("CODE") or (flow / "code").read_text(),
+        "redirect_uri": os.environ.get("REDIRECT_URI", "https://shuttle.test/callback")}
+v = os.environ.get("VERIFIER", None)
+v = (flow / "verifier").read_text() if v is None else v
+if v:
+    form["code_verifier"] = v
+secret = os.environ.get("SECRET") or (Path.home() / ".shuttle-secret").read_text().strip()
+r = requests.post("https://id.shuttle.test/realms/shuttle/protocol/openid-connect/token", data=form,
+                  auth=(os.environ.get("CLIENT", "shuttle-app"), secret))
+if r.ok:
+    t = r.json()
+    (flow / "refresh").write_text(t["refresh_token"])
+    print(f"{r.status_code} OK  access_token: {t['access_token'][:10]}... (expires in {t['expires_in']} s)")
+    print(f"        refresh_token: {t['refresh_token'][:10]}... (saved in ~/flow/refresh)")
+else:
+    print(r.status_code, r.text)
