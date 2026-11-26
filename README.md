@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [The SQL Roadmap for Beginners](https://youtu.be/sjTBLMRD-cY) | [page](https://cloudexplainers.com/the-sql-roadmap-for-beginners/) | [sql-roadmap](sql-roadmap/) |
 | [How to Fix Linux 'Too Many Open Files' Errors](https://youtu.be/dO2yy0j0a9s) | [page](https://cloudexplainers.com/how-to-fix-linux-too-many-open-files-errors/) | [linux-too-many-open-files](linux-too-many-open-files/) |
 | [How to Fix Network 'No Route to Host' Errors on Linux](https://youtu.be/r28RihiAa4Q) | [page](https://cloudexplainers.com/how-to-fix-network-no-route-to-host-errors-on-linux/) | [network-no-route-to-host](network-no-route-to-host/) |
 | [Every Django Concept a Beginner Needs to Know](https://youtu.be/Go_7URlZlDk) | [page](https://cloudexplainers.com/every-django-concept-a-beginner-needs-to-know/) | [django-concepts-every](django-concepts-every/) |
