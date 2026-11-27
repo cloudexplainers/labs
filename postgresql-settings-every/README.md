@@ -1,6 +1,6 @@
 # Every PostgreSQL Setting to Change After You Install It
 
-Video: https://youtu.be/PNy00bzYfI0  
+Video: https://youtu.be/WUPZQ9pPoo0  
 Written version: https://cloudexplainers.com/every-postgresql-setting-to-change-after-you-install-it/
 
 Everything below ran for real in the video. Run it in a throwaway machine or container, never on a computer you care about.
