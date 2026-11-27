@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [How to Fix Python 'Address Already in Use' Errors](https://youtu.be/WmF1RtSwrSU) | [page](https://cloudexplainers.com/how-to-fix-python-address-already-in-use-errors/) | [python-address-already-in-use](python-address-already-in-use/) |
 | [Golang Interfaces and Mocks in 5 Minutes](https://youtu.be/mjI6LP72ULU) | [page](https://cloudexplainers.com/golang-interfaces-and-mocks-in-5-minutes/) | [golang-interfaces-mocks](golang-interfaces-mocks/) |
 | [How to Fix Git 'Detached HEAD' State](https://youtu.be/C9BcYYMhTOo) | [page](https://cloudexplainers.com/how-to-fix-git-detached-head-state/) | [git-detached-head-fix](git-detached-head-fix/) |
 | [Linux Firewall with ufw: Full Tutorial for Beginners](https://youtu.be/e8ycU4HXtFs) | [page](https://cloudexplainers.com/linux-firewall-with-ufw-full-tutorial-for-beginners/) | [ufw-firewall-tutorial](ufw-firewall-tutorial/) |
