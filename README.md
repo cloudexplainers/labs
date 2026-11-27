@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Every PostgreSQL Setting to Change After You Install It](https://youtu.be/PNy00bzYfI0) | [page](https://cloudexplainers.com/every-postgresql-setting-to-change-after-you-install-it/) | [postgresql-settings-every](postgresql-settings-every/) |
 | [What Happens When You Install Docker on Ubuntu](https://youtu.be/5vUYI6gDY1Y) | [page](https://cloudexplainers.com/what-happens-when-you-install-docker-on-ubuntu/) | [docker-install-ubuntu](docker-install-ubuntu/) |
 | [How to Fix Python 'Address Already in Use' Errors](https://youtu.be/WmF1RtSwrSU) | [page](https://cloudexplainers.com/how-to-fix-python-address-already-in-use-errors/) | [python-address-already-in-use](python-address-already-in-use/) |
 | [Golang Interfaces and Mocks in 5 Minutes](https://youtu.be/mjI6LP72ULU) | [page](https://cloudexplainers.com/golang-interfaces-and-mocks-in-5-minutes/) | [golang-interfaces-mocks](golang-interfaces-mocks/) |
