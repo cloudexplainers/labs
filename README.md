@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [WSL vs a Linux Virtual Machine: Which One Should You Use?](https://youtu.be/ERrf1qwEYSE) | [page](https://cloudexplainers.com/wsl-vs-a-linux-virtual-machine-which-one-should-you-use/) | [wsl-vs-linux-vm](wsl-vs-linux-vm/) |
 | [Every PostgreSQL Setting to Change After You Install It](https://youtu.be/WUPZQ9pPoo0) | [page](https://cloudexplainers.com/every-postgresql-setting-to-change-after-you-install-it/) | [postgresql-settings-every](postgresql-settings-every/) |
 | [What Happens When You Install Docker on Ubuntu](https://youtu.be/5vUYI6gDY1Y) | [page](https://cloudexplainers.com/what-happens-when-you-install-docker-on-ubuntu/) | [docker-install-ubuntu](docker-install-ubuntu/) |
 | [How to Fix Python 'Address Already in Use' Errors](https://youtu.be/WmF1RtSwrSU) | [page](https://cloudexplainers.com/how-to-fix-python-address-already-in-use-errors/) | [python-address-already-in-use](python-address-already-in-use/) |
