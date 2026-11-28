@@ -1,0 +1,10 @@
+[Unit]
+Description=What is my address site
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/whoami/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

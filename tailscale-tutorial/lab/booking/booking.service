@@ -1,0 +1,10 @@
+[Unit]
+Description=Laundry room booking page
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /srv/booking/app.py
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
