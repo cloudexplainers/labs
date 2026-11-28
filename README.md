@@ -4,6 +4,7 @@ The lab files and every command from [Cloud Explainers](https://www.youtube.com/
 
 | Video | Written version | Lab |
 | --- | --- | --- |
+| [Every Git Setting to Change on Day One](https://youtu.be/6X7UmIE5aew) | [page](https://cloudexplainers.com/every-git-setting-to-change-on-day-one/) | [git-settings-every](git-settings-every/) |
 | [WSL vs a Linux Virtual Machine: Which One Should You Use?](https://youtu.be/ERrf1qwEYSE) | [page](https://cloudexplainers.com/wsl-vs-a-linux-virtual-machine-which-one-should-you-use/) | [wsl-vs-linux-vm](wsl-vs-linux-vm/) |
 | [Every PostgreSQL Setting to Change After You Install It](https://youtu.be/WUPZQ9pPoo0) | [page](https://cloudexplainers.com/every-postgresql-setting-to-change-after-you-install-it/) | [postgresql-settings-every](postgresql-settings-every/) |
 | [What Happens When You Install Docker on Ubuntu](https://youtu.be/5vUYI6gDY1Y) | [page](https://cloudexplainers.com/what-happens-when-you-install-docker-on-ubuntu/) | [docker-install-ubuntu](docker-install-ubuntu/) |
